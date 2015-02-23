@@ -1,0 +1,35 @@
+body {
+	background-color: #CCCCCC;
+	text-align: center
+}
+
+.textbox {
+	border: 2px solid #683086;
+	width: 40%;
+	height: 32px;
+	font-size: 20px;
+	text-align: left;
+}
+
+.wrapper {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 1000px;
+	transform: translate(-50%, -50%);
+}
+
+.button {
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 20px;
+	background: #683086;
+	border: none;
+	width: 40%;
+	padding: 6px 150px 6px 150px;
+	text-decoration: none;
+}
+
+.inner-wrap {
+	margin-top: 5px;
+}
