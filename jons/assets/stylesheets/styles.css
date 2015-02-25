@@ -1,0 +1,29 @@
+
+body {
+	background: rgb(79, 79, 79);
+	color: black;
+}
+
+.header h1 {
+	font-size: 6em;
+}
+
+form {
+
+}
+
+form>div {
+	width: 24%;
+}
+
+input[type="search"] {
+	border-radius: 10px;
+	width: 100%;
+	padding-left: 12px;
+	margin: 5px 0;
+}
+
+input[type="submit"] {
+	float: right;
+	padding: 0 1.5vw;
+}
