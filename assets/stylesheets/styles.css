@@ -1,9 +1,14 @@
+* { 
+	margin: 0; 
+	padding: 0; 
+}
+
 body {
 	background-color: #CCCCCC;
 	text-align: center
 }
 
-.textbox {
+input[type="search"] {
 	border: 2px solid #683086;
 	width: 40%;
 	height: 32px;
@@ -11,17 +16,9 @@ body {
 	text-align: left;
 }
 
-.wrapper {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	width: 1000px;
-	transform: translate(-50%, -50%);
-}
-
 .button {
 	font-family: Arial;
-	color: #ffffff;
+	color: #FFFFFF;
 	font-size: 20px;
 	background: #683086;
 	border: none;
@@ -32,4 +29,23 @@ body {
 
 .inner-wrap {
 	margin-top: 5px;
+}
+
+.wrapper {
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	width: 1000px;
+	transform: translate(-50%, -50%);
+}
+
+.header {
+	font-size: 35px;
+}
+
+.alert{
+	color: #FFF;
+	font-size: 18px;
+	background-color: purple;
+	padding-top: 5px;
 }
