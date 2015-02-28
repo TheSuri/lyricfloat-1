@@ -36,7 +36,6 @@ function getLyrics($artist_results)
     return $artists;
 }
 
-print_r(getLyrics(array('Kendrick Lamar')));
 
 
 
