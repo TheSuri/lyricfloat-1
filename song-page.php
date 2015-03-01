@@ -53,7 +53,7 @@
 				</div>
 
 				<div class="nav-manager">
-					<button class="third-button" type="submit" onclick="window.location.href='/LyricFloat/word-cloud.php?">Back</button>
+					<button class="third-button" type="submit" onclick="window.location.href='/LyricFloat/word-cloud.php?'">Back</button>
 				<div>
 			</div>
 		</div>
