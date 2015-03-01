@@ -138,6 +138,17 @@ class WordCloud {
 	    return implode('', $cloud);
     }
 
+    function getSongsWith($word) {
+    	$songs = array();
+        foreach ($this->artists as $artist) {
+            foreach ($artist->songs as $song) {
+            	$count = $song->countWord($word);
+            	if ($count!=0) $songs[$song] = $count;
+			}
+    	}
+    	return $songs;
+    }
+
 	private function standardDeviation($words, $mean) {
 		$sum = 0;
 		foreach($words as $word => $freq) {

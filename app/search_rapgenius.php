@@ -6,8 +6,8 @@
  * Time: 10:42 AM
  */
 
-require_once '../RapGenius-PHP-master/src/rapgenius.php';
-require_once '../RapGenius-PHP-master/src/rap_genius_wrapper.php';
+require_once(__DIR__.'/../RapGenius-PHP-master/src/rapgenius.php');
+require_once(__DIR__.'/../RapGenius-PHP-master/src/rap_genius_wrapper.php');
 
 
 function getLyrics($artist_results)
@@ -16,6 +16,7 @@ function getLyrics($artist_results)
 
     $artists = array();
     foreach ($artist_results as $artist) {
+        echo "GOT THIS ARTIST: ", $artist;
         $artists[$artist] = array();
         $song_results = $rapgenius->param_q(array('q' => $artist))
             ->execute_request();

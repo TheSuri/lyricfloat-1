@@ -36,7 +36,7 @@
 			<div class="header">
 				<img src="assets/images/LyricFloat.png" height="35%" width="35%" />
 			</div>
-			<form  id="artist_name_form" action="getLyricsForWC.php">
+			<form  id="artist_name_form" action="word-cloud.php">
 				
 					<div>
 						<input form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
