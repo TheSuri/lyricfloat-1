@@ -3,23 +3,23 @@
  * Created by PhpStorm.
  * User: Janet
  * Date: 2/20/2015
- * Time: 4:17 AM
+ * Time: 4:29 AM
  */
-
 /*
- * Gets all the matching artists that match the artist name
+ * Gets the songs by a particular artist specifed by the artist ID
  */
 
-$artist_name = $_REQUEST['artist_name'];
+
+$artist_id = $_REQUEST['artist_id'];
 //simply for testing purposes
-$artist_name = 'Radiohead';
+$artist_id = 'ARH6W4X1187B99274F';
 
 //if artist name is not in REQUEST
-if (empty($artist_name))
+if (empty($artist_id))
     exit("Error: No artist name given.");
 
 //wrapper that allows for easy access to artist names
-require_once 'php-echonest-api-master/lib/EchoNest/Autoloader.php';
+require_once '../php-echonest-api-master/lib/EchoNest/Autoloader.php';
 EchoNest_Autoloader::register();
 
 $echonest = new EchoNest_Client();
@@ -28,5 +28,6 @@ $echonest = new EchoNest_Client();
 $apikey = 'HBYJBMW3HY66L5L8D';
 $echonest->authenticate($apikey);
 
-$results = $echonest->getArtistApi()->search(array('name' => $artist_name));
+$results = $echonest->getSongApi()->search(array('artist_id' => $artist_id,
+                                                'results' => 100));
 print_r($results);

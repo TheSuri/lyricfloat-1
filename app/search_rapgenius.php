@@ -6,8 +6,8 @@
  * Time: 10:42 AM
  */
 
-require_once 'RapGenius-PHP-master/src/rapgenius.php';
-require_once 'RapGenius-PHP-master/src/rap_genius_wrapper.php';
+require_once '../RapGenius-PHP-master/src/rapgenius.php';
+require_once '../RapGenius-PHP-master/src/rap_genius_wrapper.php';
 
 
 function getLyrics($artist_results)
@@ -19,7 +19,6 @@ function getLyrics($artist_results)
         $artists[$artist] = array();
         $song_results = $rapgenius->param_q(array('q' => $artist))
             ->execute_request();
-    //print_r($song_results);
 
         $songs = array();
 
@@ -30,7 +29,7 @@ function getLyrics($artist_results)
                 'lyrics' => lyricsByID($song['result']['id'])['lyrics']
             );
         }
-        $artists[$artist]['songs'] = $songs;
+        $artists[$artist] = $songs;
     }
 
     return $artists;
@@ -45,4 +44,6 @@ function getLyrics($artist_results)
 //}
 //
 //print_r($songs);
+
+?>
 

@@ -2,6 +2,10 @@
 	margin: 0; 
 }
 
+a {
+	text-decoration: none;
+}
+
 body {
 	background-color: #CCCCCC;
 	text-align: center;
@@ -88,6 +92,8 @@ input[type="search"] {
 	-webkit-border-radius: 10px;
 	border-radius: 10px; /* future proofing */
 	-khtml-border-radius: 10px; /* for old Konqueror browsers */
+	overflow: auto;
+	line-height: 20px;
 }
 
 .lyric-page-wrap{

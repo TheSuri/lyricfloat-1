@@ -16,6 +16,7 @@ class Song {
     // and their frequency in the song
     function getWordCount() {
         $wordCount = array();
+        $this->lyrics = preg_replace('/\[([^\[\]]++|(?R))*+\]/', '', $this->lyrics);
         $words = preg_split('/((^\p{P}+)|(\p{P}*\s+\p{P}*)|(\p{P}+$))/', $this->lyrics, -1, PREG_SPLIT_NO_EMPTY);
         foreach ($words as $word) {
         	$word = strtolower($word);
