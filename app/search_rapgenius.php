@@ -16,7 +16,6 @@ function getLyrics($artist_results)
 
     $artists = array();
     foreach ($artist_results as $artist) {
-        echo "GOT THIS ARTIST: ", $artist;
         $artists[$artist] = array();
         $song_results = $rapgenius->param_q(array('q' => $artist))
             ->execute_request();

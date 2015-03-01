@@ -5,28 +5,6 @@
 	session_start();
 	$WC = $_SESSION['WC'];
 	$WC_html = 'Sorry, we could not find the artist specified';
-
-	if( isset($_GET['artist_name']) ) {
-	    $artist = $_GET['artist_name'];
-		$data = getLyrics(array($artist));
-
-		$WC = new WordCloud();
-		$err = $WC->loadData($data);
-		if (!isset($err)) {
-			$err = $WC->countWordFreq();
-			if (!isset($err)) {
-				$_SESSION['WC'] = $WC;
-				$WC_html = $WC->generateWC();
-			} else {
-				echo $err;
-			}
-		} else {
-			echo $err;
-		}
-	} else {
-		// Show no word cloud
-	}
-
 ?>
 
 
@@ -48,7 +26,25 @@
 					<img src="assets/images/LyricFloat.png" height="35%" width="35%" />
 				</div>
 				<div class="word-cloud-wrap">
-					<?php echo $WC_html ?>
+					<?php
+					// TODO: Show loading bar
+						if( isset($_GET['artist_name']) ) {
+						    $artist = $_GET['artist_name'];
+							$data = getLyrics(array($artist));
+
+							// TODO: if $WC is already set, then mergeData
+							// else create new with $data;
+							try {
+								$WC = new WordCloud($data);
+								$_SESSION['WC'] = $WC;
+								echo $WC->generateWC();
+							} catch (Exception $e) {
+								echo $e->getMessage();
+							}
+						} else {
+							echo "Please provide an artist";
+						}
+					?>
 				</div>
 				
 				<div class="wc_form">

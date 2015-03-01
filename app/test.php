@@ -26,19 +26,20 @@ require_once('search_rapgenius.php');
 // 			)
 // 		);
 
-$data = getLyrics(array($argv[1]));
+// $data = getLyrics(array($argv[1]));
 
-$WC = new WordCloud();
-$err = $WC->loadData($data);
-if (!isset($err)) {
-	$err = $WC->countWordFreq();
-	if (!isset($err)) {
-		echo $WC->generateWC();
-	} else {
-		echo $err;
-	}
-} else {
-	echo $err;
-}
+// $WC = new WordCloud();
+// $err = $WC->loadData($data);
+// if (!isset($err)) {
+// 	$err = $WC->countWordFreq();
+// 	if (!isset($err)) {
+// 		echo $WC->generateWC();
+// 	} else {
+// 		echo $err;
+// 	}
+// } else {
+// 	echo $err;
+// }
+
 
 ?>

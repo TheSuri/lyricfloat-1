@@ -1,5 +1,5 @@
 <?php
-	$song_list = "Could not find specified artists or songs\nMake sure you've successfully created a word cloud,\n and your session cookies are turned on";
+	$songs = null;
 	require_once('app/WordCloud.php');
 
 	session_start();
@@ -7,7 +7,7 @@
 
 	$searched_word = (isset($_GET['searched-word'])) ? $_GET['searched-word'] : "USER'S ENTERED WORD";
 
-	$WC->getSongsWith($searched_word);
+	$songs = $WC->getSongsWith($searched_word);
 
 
 ?>
@@ -35,7 +35,17 @@
 					</div>
 					<div class="song-lyrics">
 						<div class="lyrics">
-							<?php echo $song_list ?>
+							<?php 
+								if (isset($songs)) {
+									echo "<ul>"
+									foreach ($songs as $song => $count) {
+										echo "<li><a href='#{$song->title'>$song->title ($count)</a></li>"
+									}
+									echo "</ul>"
+								} else {
+									echo "Could not find specified artists or songs\nMake sure you've successfully created a word cloud,\n and your session cookies are turned on"
+								}
+							?>
 						</div>
 					</div>
 				</div>
