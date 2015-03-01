@@ -41,5 +41,4 @@ require_once('search_rapgenius.php');
 // 	echo $err;
 // }
 
-
 ?>

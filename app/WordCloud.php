@@ -121,7 +121,7 @@ class WordCloud {
 	       with some minor modifications to the implementation */
 	    
 	    /* Initialize some variables */
-	    $fmax = 4; /* Maximum font size */
+	    $fmax = 3; /* Maximum font size */
 	    $fmin = 0; /* Minimum font size */
 	    $mean = array_sum($words) / count($words);
 	    $sd = $this->standardDeviation($words, $mean);
@@ -130,13 +130,13 @@ class WordCloud {
 	    	$wordSD = (($freq - $mean) / $sd);
 	    	if ($wordSD > 1.2) $font_size = $fmax;
 	    	elseif ($wordSD < -1.2) $font_size = $fmin;
-	    	else $font_size = (($fmax+$fmin)/2) + ( ($wordSD/1.3) * (($fmax-$fmin)/2) );
+	    	else $font_size = (($fmax+$fmin)/2) + ( ($wordSD/1.2) * (($fmax-$fmin)/2) );
 	    	// Fontsize average + (ratio of standard deviations * Fontsize range/2)
 	    	// ratio of standard deviation uses 1.2 because we assume that our data will
 	    	// typically be no more than 1.2 standard deviations away from each other. 
 	    	// if there is an outlier, we just set it to the min or max font size.
             $color = $this->words[$word]->color;
-            array_push($cloud, "<a href='/song-page.php?{$word}'><span style=\"font-size: {$font_size}em; color: {$color};\">$word</span></a> ");
+            array_push($cloud, "<a href='/LyricFloat/song-page.php?searched-word={$word}'><span style=\"font-size: {$font_size}em; color: {$color};\">$word</span></a> ");
             $tags++;
             if ($tags >= $this->maxNumWords) break;
 	    }
@@ -151,10 +151,9 @@ class WordCloud {
         foreach ($this->artists as $name => $artist) {
             foreach ($artist->songs as $song) {
             	$count = $song->countWord($word);
-            	if ($count!=0) $songs[$song] = $count;
+            	if ($count!=0) $songs[$song->title] = $count;
 			}
     	}
-
     	return $songs;
     }
 

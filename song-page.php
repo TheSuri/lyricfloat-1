@@ -4,12 +4,7 @@
 
 	session_start();
 	$WC = $_SESSION['WC'];
-
-	$searched_word = (isset($_GET['searched-word'])) ? $_GET['searched-word'] : "USER'S ENTERED WORD";
-
-	$songs = $WC->getSongsWith($searched_word);
-
-
+	if (isset($_GET['searched-word'])) $searched_word = $_GET['searched-word'];
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +16,8 @@
 	<body>
 
 		<div class="container">
-		<div class="top-bar"></div>
+		<div class="top-bar">
+		</div>
 			<!-- <div class="alert alert-success hide" role="alert"></div>
 			<div class="alert alert-danger hide" role="alert"></div> -->
 			
@@ -31,19 +27,25 @@
 				</div>
 				<div class="lyric-page-wrap">
 					<div id="song-info">
-						<span id="searched-word"><?php echo $searched_word ?></span>
+						<span id="searched-word"><?php if (isset($searched_word)) echo $searched_word; else echo "USER SELECTED WORD"; ?></span>
 					</div>
 					<div class="song-lyrics">
 						<div class="lyrics">
 							<?php 
-								if (isset($songs)) {
-									echo "<ul>"
-									foreach ($songs as $song => $count) {
-										echo "<li><a href='#{$song->title'>$song->title ($count)</a></li>"
+								if (isset($searched_word)) {
+									$songs = $WC->getSongsWith($searched_word);
+									if (isset($songs)) {
+										echo "<ul>";
+										foreach ($songs as $song => $count) {
+											echo "<li><a href='/LyricFloat/lyrics-page.php?{$song}&{$searched_word}'>$song ($count)</a></li>";
+										}
+										echo "</ul>";
+									} else {
+										echo "Could not find specified artists or songs\nMake sure you've successfully created a word cloud,\n and your session cookies are turned on";
 									}
-									echo "</ul>"
 								} else {
-									echo "Could not find specified artists or songs\nMake sure you've successfully created a word cloud,\n and your session cookies are turned on"
+									$_SESSION["alert"] = "Error: Please select a word to display";
+									header("Location: http://localhost:8888/LyricFloat/word-cloud.php");
 								}
 							?>
 						</div>
@@ -51,7 +53,7 @@
 				</div>
 
 				<div class="nav-manager">
-					<button class="third-button" type="submit" onclick="window.location.href='/word-cloud'">Back</button>
+					<button class="third-button" type="submit" onclick="window.location.href='/LyricFloat/word-cloud.php?">Back</button>
 				<div>
 			</div>
 		</div>

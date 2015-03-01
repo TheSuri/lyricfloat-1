@@ -4,7 +4,6 @@
 
 	session_start();
 	$WC = $_SESSION['WC'];
-	$WC_html = 'Sorry, we could not find the artist specified';
 ?>
 
 
@@ -30,13 +29,12 @@
 					// TODO: Show loading bar
 						if( isset($_GET['artist_name']) ) {
 						    $artist = $_GET['artist_name'];
-							$data = getLyrics(array($artist));
-
-							// TODO: if $WC is already set, then mergeData
-							// else create new with $data;
 							try {
-								$WC = new WordCloud($data);
-								$_SESSION['WC'] = $WC;
+							    if (!isset($WC->artists[$artist])) {
+									$data = getLyrics(array($artist));
+									$WC = new WordCloud($data);
+									$_SESSION['WC'] = $WC;
+							    }
 								echo $WC->generateWC();
 							} catch (Exception $e) {
 								echo $e->getMessage();
