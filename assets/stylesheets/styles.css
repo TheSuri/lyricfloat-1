@@ -65,6 +65,7 @@ input[type="search"] {
 	width: 1000px;
 	overflow: auto;
 	transform: translate(-50%, -50%);
+	margin-bottom: 30px;
 }
 
 .header {
