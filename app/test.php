@@ -29,7 +29,7 @@ require_once('search_rapgenius.php');
 // $data = getLyrics(array($argv[1]));
 
 // $WC = new WordCloud();
-// $err = $WC->loadData($data);
+// $err = $WC->mergeData($data);
 // if (!isset($err)) {
 // 	$err = $WC->countWordFreq();
 // 	if (!isset($err)) {

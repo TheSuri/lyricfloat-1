@@ -27,12 +27,15 @@
 				<div class="word-cloud-wrap">
 					<?php
 					// TODO: Show loading bar
-						if (isset($_GET['artist_name']) ) {
+						if (isset($_GET['artist_name'])) {
 						    $artist = $_GET['artist_name'];
 							try {
 							    if (!isset($WC->artists[$artist])) {
 									$data = getLyrics(array($artist));
-									$WC = new WordCloud($data);
+									if (isset($_GET['additional_artist']) && $_GET['additional_artist']) 
+										$WC->mergeData($data);
+									else 
+										$WC = new WordCloud($data);
 									$_SESSION['WC'] = $WC;
 							    }
 								echo $WC->generateWC();
@@ -54,20 +57,21 @@
 				</div>
 				
 				<div class="wc_form">
-					<form  id="artist_name_form" action="getLyricsForWC.php">
+					<form  id="artist_name_form" action="/LyricFloat/word-cloud.php">
 					
 						<div>
-							<input form="wc_artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
+							<input form="artist_name_form" type="checkbox" name="additional_artist" style="display:none;">
+							<input form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
 						</div>
 						<div class="inner-wrap">
-						   <button class="third-button" type="submit">Add To Cloud</button>	
+						   <button id="add_to_cloud_btn" class="third-button" onclick="addToCloud()">Add To Cloud</button>	
 							
 							<div id="fb-root"></div>
 						   								
 
-							<img id="share_button" src="share_button.png" >
+							<img id="share_btn" src="share_button.png" >
 
-						   <button class="third-button" type="submit">Submit</button>		
+						   <button id="new_cloud_btn" class="third-button" type="submit">Submit</button>		
 						</div>
 					</form>
 				</div>
@@ -77,6 +81,12 @@
 </html>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+	(function() {
+		var e = document.createElement('script');
+		e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+		e.async = true;
+		document.getElementById('fb-root').appendChild(e);
+	}());
 	window.fbAsyncInit = function() {
 		FB.init({
 		  appId  : '1422647264695991',
@@ -85,15 +95,12 @@
 		  xfbml  : true  // parse XFBML
 		});
 	};
-
-	(function() {
-		var e = document.createElement('script');
-		e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-		e.async = true;
-		document.getElementById('fb-root').appendChild(e);
-	}());
+	function addToCloud() {
+		$("input[type=checkbox]").prop('checked', true);
+		$("#artist_name_form").submit();
+	};
 	$(document).ready(function(){
-		$('#share_button').click(function(e){
+		$('#share_btn').click(function(e){
 			e.preventDefault();
 			FB.ui({
 				method: 'feed',

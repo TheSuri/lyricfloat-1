@@ -36,8 +36,11 @@
 									$songs = $WC->getSongsWith($searched_word);
 									if (isset($songs)) {
 										echo "<ul>";
-										foreach ($songs as $song => $count) {
-											echo "<li><a href='/LyricFloat/lyrics-page.php?{$song}&{$searched_word}'>$song ($count)</a></li>";
+										foreach ($songs as $artist => $a_songs) {
+											echo "<h2>{$artist}</h2>";
+											foreach ($a_songs as $song => $count) {
+												echo "<li><a href='/LyricFloat/lyrics-page.php?{$song}&{$searched_word}'>$song ($count)</a></li>";
+											}
 										}
 										echo "</ul>";
 									} else {
