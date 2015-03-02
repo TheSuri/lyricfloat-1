@@ -67,9 +67,48 @@
 						   <button id="add_to_cloud_btn" class="third-button" onclick="addToCloud()">Add To Cloud</button>	
 							
 							<div id="fb-root"></div>
-						   								
+						   			
+						   	<script>
+								  window.fbAsyncInit = function() {
+									FB.init({
+									  appId  : '1422647264695991',
+									  status : true, // check login status
+									  cookie : true, // enable cookies to allow the server to access the session
+									  xfbml  : true  // parse XFBML
+									});
+								  };
+								
+								  (function() {
+									var e = document.createElement('script');
+									e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+									e.async = true;
+									document.getElementById('fb-root').appendChild(e);
+								  }());
+								</script>
 
-							<img id="share_btn" src="share_button.png" >
+							<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+
+							<img id="share_btn" src="share.gif" >
+												
+							<script type="text/javascript">
+								$(document).ready(function(){
+								$('#share_btn').click(function(e){
+								e.preventDefault();
+								FB.ui(
+								{
+								method: 'feed',
+								name: 'LyricFloat word cloud!',
+								link: ' http://www.mushroomsensei.com/',
+								picture: 'http://www.osamuko.com/blog/wp-content/uploads/2009/09/8.jpg',
+								caption: 'Come and see the word cloud I generated.',
+								description: 'Such Lyric, so float, much cloud.',
+								message: ''
+								});
+								});
+								});
+							</script>					
+							
+							
 
 						   <button id="new_cloud_btn" class="third-button" type="submit">Submit</button>		
 						</div>
@@ -79,38 +118,3 @@
 		</div>
 	</body>
 </html>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-	(function() {
-		var e = document.createElement('script');
-		e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-		e.async = true;
-		document.getElementById('fb-root').appendChild(e);
-	}());
-	window.fbAsyncInit = function() {
-		FB.init({
-		  appId  : '1422647264695991',
-		  status : true, // check login status
-		  cookie : true, // enable cookies to allow the server to access the session
-		  xfbml  : true  // parse XFBML
-		});
-	};
-	function addToCloud() {
-		$("input[type=checkbox]").prop('checked', true);
-		$("#artist_name_form").submit();
-	};
-	$(document).ready(function(){
-		$('#share_btn').click(function(e){
-			e.preventDefault();
-			FB.ui({
-				method: 'feed',
-				name: 'LyricFloat word cloud!',
-				link: ' http://www.mushroomsensei.com/',
-				picture: 'http://www.osamuko.com/blog/wp-content/uploads/2009/09/8.jpg',
-				caption: 'Come and see the word cloud I generated.',
-				description: 'Such Lyric, so float, much cloud.',
-				message: ''
-			});
-		});
-	});
-</script>
