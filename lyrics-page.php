@@ -16,6 +16,7 @@
 	<head>
 		<title>LyricFloat - Lyrics Page</title>
 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
+		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 	</head>
 
 	<body>
@@ -50,7 +51,6 @@
 
 	</body>
 </html>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var query = new RegExp("(\\b" + "<?php echo $searched_word ?>" + "\\b)", "gim");

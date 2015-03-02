@@ -9,33 +9,29 @@
 		<title>LyricFloat - Lyrical Word Clouds</title>
 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
 		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 		<meta charset="utf-8">	
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
-
 	<body>
-
 		<div class="container">			
 			<div class="wrapper">
 			<div class="header">
 				<a href="/LyricFloat/"><img src="assets/images/LyricFloat.png" height="35%" width="35%" /></a>
 			</div>
-			<form  id="artist_name_form" action="word-cloud.php">
-				
-					<div>
-						<input id="search-box" form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
-					</div>
-					<div class="inner-wrap">
-					   <button class="button" type="submit">Submit</button>		
-					</div>
+			<form  id="artist_name_form" action="word-cloud.php">	
+				<div>
+					<input id="search-box" form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
+				</div>
+				<div class="inner-wrap">
+				   <button class="button" type="submit">Submit</button>		
+				</div>
 			</form>
 			</div>
 		</div>
 	</body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$('#search-box').autocomplete({
 		source:

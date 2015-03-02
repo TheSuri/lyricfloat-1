@@ -11,6 +11,8 @@
 	<head>
 		<title>LyricFloat - Word Cloud</title>
 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
+		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	</head>
 
 	<body>
@@ -68,8 +70,6 @@
 		</div>
 	</body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 <script src="assets/javascript/html2canvas.js" type="text/javascript"></script>
 <script src="assets/javascript/base64binary.js" type="text/javascript"></script>
 <script type="text/javascript">
