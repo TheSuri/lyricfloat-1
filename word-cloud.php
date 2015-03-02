@@ -103,23 +103,40 @@
 		$("input[type=checkbox]").prop('checked', true);
 		$("#artist_name_form").submit();
 	};
+	// $(document).ready(function(){
+	// 	$('#share_btn').click(function(e){
+	// 		e.preventDefault();
+	// 			var dataUrl;
+	// 			html2canvas(document.getElementById("wordcloud")).then(function(canvas) {
+	// 				dataUrl = canvas.toDataURL(); //get's image string
+	// 				$("#fb_image").attr("content", dataUrl);
+	// 			});			
+	// 			FB.ui({
+	// 			method: 'feed',
+	// 			name: 'LyricFloat word cloud!',
+	// 			link: ' http://www.mushroomsensei.com/',
+	// 			picture: dataUrl,
+	// 			caption: 'Come and see the word cloud I generated.',
+	// 			description: 'Such Lyric, so float, much cloud.',
+	// 			message: ''
+	// 		});
+	// 	});
+	// });
 	$(document).ready(function(){
 		$('#share_btn').click(function(e){
 			e.preventDefault();
-				var dataUrl;
-				html2canvas(document.getElementById("wordcloud")).then(function(canvas) {
-					dataUrl = canvas.toDataURL(); //get's image string
-					$("#fb_image").attr("content", dataUrl);
-				});			
-				FB.ui({
-				method: 'feed',
-				name: 'LyricFloat word cloud!',
-				link: ' http://www.mushroomsensei.com/',
-				picture: dataUrl,
-				caption: 'Come and see the word cloud I generated.',
-				description: 'Such Lyric, so float, much cloud.',
-				message: ''
-			});
+			var dataUrl;
+			html2canvas(document.getElementById("wordcloud")).then(function(canvas) {
+				dataUrl = canvas.toDataURL(); //get's image string
+				$("#fb_image").attr("content", dataUrl);
+			});			
+			FB.ui({
+				method: 'share_open_graph',
+				action_type: 'og.likes',
+				action_properties: JSON.stringify({
+				object:'http://www.mushroomsensei.com',
+				})
+			}, function(response){});
 		});
 	});
 </script>
