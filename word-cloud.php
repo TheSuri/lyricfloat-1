@@ -72,7 +72,7 @@
 							<div id="fb-root"></div>
 						   								
 
-							<img id="share_btn" src="share_button.png" >
+							<img id="share_btn" src="/LyricFloat/assets/images/share_button.png" >
 
 						   <button id="new_cloud_btn" class="third-button" type="submit">Submit</button>		
 						</div>
