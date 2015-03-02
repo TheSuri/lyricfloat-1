@@ -8,6 +8,6 @@
 		$_SESSION['alert'] = array('error' => 'No artist name was submitted');
 	}
 
-	header( 'Location: http://localhost:8888/LyricFloat/index.php' );  
+	header( 'Location: http://localhost/LyricFloat/index.php' );  
 ?>
 

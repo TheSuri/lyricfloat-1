@@ -35,7 +35,7 @@
 									echo "<pre>",$WC->artists[$artist]->songs[$song_name]->lyrics,"</pre>";
 								} else {
 									$_SESSION["alert"] = "Error: Please select a song to display";
-									header("Location: http://localhost:8888/LyricFloat/song-page.php");
+									header("Location: http://localhost/LyricFloat/song-page.php");
 								}								
 							?>
 						</div>

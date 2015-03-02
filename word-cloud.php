@@ -50,23 +50,17 @@
 						}
 					?>
 				</div>
-				
+				<div id="fb-root"></div>
 				<div class="wc_form">
 					<form  id="artist_name_form" action="/LyricFloat/word-cloud.php">
-					
 						<div>
 							<input form="artist_name_form" type="checkbox" name="additional_artist" style="display:none;">
-							<input form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
+							<input id="search-box" form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
 						</div>
 						<div class="inner-wrap">
-						   <button id="add_to_cloud_btn" class="third-button" onclick="addToCloud()">Add To Cloud</button>	
-							
-							<div id="fb-root"></div>
-						   								
-
+							<button id="add_to_cloud_btn" class="third-button" onclick="addToCloud()">Add To Cloud</button>
 							<img id="share_btn" src="/LyricFloat/assets/images/share_button.png" >
-
-						   <button id="new_cloud_btn" class="third-button" type="submit">Submit</button>		
+							<button id="new_cloud_btn" class="third-button" type="submit">Submit</button>		
 						</div>
 					</form>
 				</div>
@@ -74,7 +68,8 @@
 		</div>
 	</body>
 </html>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 <script src="assets/javascript/html2canvas.js" type="text/javascript"></script>
 <script src="assets/javascript/base64binary.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -115,12 +110,46 @@
 				FB.ui({
 					method: 'feed',
 					name: 'LyricFloat word cloud!',
-					link: 'http://localhost:8888/LyricFloat',
+					link: 'http://localhost/LyricFloat',
 					picture: decodedPng,
 					caption: 'Come and see the word cloud I generated.',
 					description: 'Such Lyric, so float, much cloud.'
 				});
 			});
 		});
+	});
+	$('#search-box').autocomplete({
+		source:
+		function (query, process) {
+			$.when(
+				$.ajax({
+				    url: 'http://ws.spotify.com/search/1/album.json?q=' + query.term,
+				})
+			).then(function (data) {
+				var process_data = [];
+				$.each(data.albums.slice(0, 4), function(i,item) {
+				  $.when (
+				   $.ajax({
+				      url: 'https://embed.spotify.com/oembed/?url=' + item.href,
+				      dataType: 'jsonp'
+				   })
+				  ).then(function (image) {
+				    process_data.push( { label: item.artists[0].name } );
+				    process( process_data );
+				  });
+				});
+			});
+		},
+		open: function(event, ui) {
+			event.preventDefault();
+		},
+		select: function (e, ui) {
+			e.preventDefault();
+			$(this).val(ui.item.label);
+		},
+		messages: {
+			noResults: '',
+			results: function() {}
+		}
 	});
 </script>

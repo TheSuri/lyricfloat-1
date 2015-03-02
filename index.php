@@ -27,17 +27,51 @@
 			<form  id="artist_name_form" action="word-cloud.php">
 				
 					<div>
-						<input form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
+						<input id="search-box" form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
 					</div>
 					<div class="inner-wrap">
 					   <button class="button" type="submit">Submit</button>		
 					</div>
 			</form>
-
 			</div>
-
 		</div>
-
 	</body>
-
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$('#search-box').autocomplete({
+		source:
+		function (query, process) {
+			$.when(
+				$.ajax({
+				    url: 'http://ws.spotify.com/search/1/album.json?q=' + query.term,
+				})
+			).then(function (data) {
+				var process_data = [];
+				$.each(data.albums.slice(0, 4), function(i,item) {
+				  $.when (
+				   $.ajax({
+				      url: 'https://embed.spotify.com/oembed/?url=' + item.href,
+				      dataType: 'jsonp'
+				   })
+				  ).then(function (image) {
+				    process_data.push( { label: item.artists[0].name } );
+				    process( process_data );
+				  });
+				});
+			});
+		},
+		open: function(event, ui) {
+			event.preventDefault();
+		},
+		select: function (e, ui) {
+			e.preventDefault();
+			$(this).val(ui.item.label);
+		},
+		messages: {
+			noResults: '',
+			results: function() {}
+		}
+	});
+</script>

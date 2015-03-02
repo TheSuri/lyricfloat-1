@@ -47,7 +47,7 @@
 									}
 								} else {
 									$_SESSION["alert"] = "Error: Please select a word to display";
-									header("Location: http://localhost:8888/LyricFloat/word-cloud.php");
+									header("Location: http://localhost/LyricFloat/word-cloud.php");
 								}
 							?>
 						</div>
