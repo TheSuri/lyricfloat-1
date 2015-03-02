@@ -60,17 +60,17 @@ input[type="search"] {
 
 .wrapper {
 	position: absolute;
-	top: 40%;
+	top: 0px;
 	left: 50%;
 	width: 1000px;
 	overflow: auto;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, 0%);
 	margin-bottom: 30px;
 }
 
 .header {
 	font-size: 35px;
-	padding-top: 20%;
+	/*padding-top: 20%;*/
 }
 
 .alert{
