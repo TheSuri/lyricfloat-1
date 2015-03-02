@@ -11,14 +11,6 @@
 	<head>
 		<title>LyricFloat - Word Cloud</title>
 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
-		<meta property="fb:app_id" content="1422647264695991" /> 
-		<meta property="og:site_name" content="LyricFloat" />
-		<meta property="og:site" content="www.mushroomsensei.com" />
-		<meta property="og:title" content="Word Cloud" />
-		<meta property="og:description" content="Come check the interactive word cloud I generated!" />
-		<meta property="og:url" content="UP TOP!!!" /> 
-		<meta property="og:type" content="Word Cloud" />
-		<meta id="fb_image" property="og:image" />
 	</head>
 
 	<body>
@@ -86,20 +78,6 @@
 <script src="assets/javascript/html2canvas.js" type="text/javascript"></script>
 <script src="assets/javascript/base64binary.js" type="text/javascript"></script>
 <script type="text/javascript">
-	// (function() {
-	// 	var e = document.createElement('script');
-	// 	e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-	// 	e.async = true;
-	// 	document.getElementById('fb-root').appendChild(e);
-	// }());
-	// window.fbAsyncInit = function() {
-	// 	FB.init({
-	// 	  appId  : '1422647264695991',
-	// 	  status : true, // check login status
-	// 	  cookie : true, // enable cookies to allow the server to access the session
-	// 	  xfbml  : true  // parse XFBML
-	// 	});
-	// };
 	function addToCloud() {
 		$("input[type=checkbox]").prop('checked', true);
 		$("#artist_name_form").submit();
@@ -111,14 +89,11 @@
 	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1422647264695991&version=v2.0";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-
 	$(document).ready(function(){
 		var decodedPng;
 		html2canvas(document.getElementById("wordcloud"), { height: null }).then(function(canvas) {
-			var data = canvas.toDataURL("image/png"); //get's image string
+			var data = canvas.toDataURL("image/png");
 			var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
-			// decodedPng = Base64Binary.decode(encodedPng);
-
             $.ajax({
                 url: 'https://api.imgur.com/3/image',
                 headers: {
@@ -135,7 +110,6 @@
                     alert("Error while uploading...");
                 }
             });
-
 			$('#share_btn').click(function(e){
 				e.preventDefault();
 				FB.ui({
@@ -148,21 +122,5 @@
 				});
 			});
 		});
-
-		// $('#share_btn').click(function(e){
-		// 	e.preventDefault();
-		// 	FB.ui({
-		// 		method: 'share_open_graph',
-		// 		action_type: 'og.likes',
-		// 		action_properties: JSON.stringify({
-		// 			object:'http://www.mushroomsensei.com',
-		// 			name: 'LyricFloat word cloud!',
-		// 			link: ' http://localhost:8888/LyricFloat',
-		// 			picture: "http://images.forbes.com/30under30/images/footer/under30-standouts.jpg",
-		// 			caption: 'Come and see the word cloud I generated.',
-		// 			description: 'Such Lyric, so float, much cloud.'
-		// 		})
-		// 	}, function(response){});
-		// });
 	});
 </script>
