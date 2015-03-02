@@ -59,10 +59,10 @@ input[type="search"] {
 
 .wrapper {
 	position: fixed;
-	top: 40%;
+	top: 0px;
 	left: 50%;
 	width: 1000px;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, 0%);
 }
 
 .header {
@@ -98,7 +98,6 @@ input[type="search"] {
 
 .lyric-page-wrap{
 	min-width: 1000px;
-	min-height: 500px;
 	background-color: #FFFFFF;
 	text-align: center;
 	padding-top: 15px;

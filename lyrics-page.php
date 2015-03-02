@@ -19,12 +19,7 @@
 	</head>
 
 	<body>
-
 		<div class="container">
-		<div class="top-bar"></div>
-			<!-- <div class="alert alert-success hide" role="alert"></div>
-			<div class="alert alert-danger hide" role="alert"></div> -->
-			
 			<div class="wrapper">
 				<div class="header">
 					<img src="assets/images/LyricFloat.png" height="35%" width="35%" />

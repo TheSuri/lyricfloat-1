@@ -11,20 +11,23 @@
 	<head>
 		<title>LyricFloat - Word Cloud</title>
 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
+		<meta property="fb:app_id" content="1422647264695991" /> 
+		<meta property="og:site_name" content="LyricFloat" />
+		<meta property="og:site" content="www.mushroomsensei.com" />
+		<meta property="og:title" content="Word Cloud" />
+		<meta property="og:description" content="Come check the interactive word cloud I generated!" />
+		<meta property="og:url" content="http://www.mushroomsensei.com" /> 
+		<meta property="og:type" content="Word Cloud" />
+		<meta id="fb_image" property="og:image" />
 	</head>
 
 	<body>
-
 		<div class="container">
-		<div class="top-bar"></div>
-			<!-- <div class="alert alert-success hide" role="alert"></div>
-			<div class="alert alert-danger hide" role="alert"></div> -->
-			
 			<div class="wrapper">
 				<div class="header">
 					<img src="assets/images/LyricFloat.png" height="35%" width="35%" />
 				</div>
-				<div class="word-cloud-wrap">
+				<div id="wordcloud" class="word-cloud-wrap">
 					<?php
 					// TODO: Show loading bar
 						if (isset($_GET['artist_name'])) {
@@ -80,6 +83,7 @@
 	</body>
 </html>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+<script src="external/html2canvas.js" type="text/javascript"></script>
 <script type="text/javascript">
 	(function() {
 		var e = document.createElement('script');
@@ -99,6 +103,12 @@
 		$("input[type=checkbox]").prop('checked', true);
 		$("#artist_name_form").submit();
 	};
+	// html2canvas(document.getElementById("wordcloud")).then(function(canvas) {
+	// 	document.body.appendChild(canvas);
+	// 	var dataUrl = canvas.toDataURL(); //get's image string
+	// 	window.open(dataUrl);             // display image
+	// 	$("#fb_image").attr("content", dataUrl);
+	// });
 	$(document).ready(function(){
 		$('#share_btn').click(function(e){
 			e.preventDefault();
