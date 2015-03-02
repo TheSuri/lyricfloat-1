@@ -125,6 +125,11 @@ input[type="search"] {
 	max-width: 1000px;
 }
 
+.lyrics span{
+    background-color:#FF9;
+    color:#555;
+}
+
 .nav-manager{
 	margin-top: 40px;
 }

@@ -56,7 +56,7 @@ class WordCloud {
 				if (!isset($this->artists[$name])) {
 					$artist = new Artist($name);
 					foreach ($songs as $song) {
-						array_push($artist->songs, new Song($song['id'], $song['title'], $song['lyrics']));
+						$artist->songs[$song['title']] = new Song($song['id'], $song['title'], $song['lyrics']);
 					}
 					$this->artists[$name] = $artist;
 				}
@@ -73,7 +73,7 @@ class WordCloud {
     function countWordFreq() {
     	try {
 	        foreach ($this->artists as $name => $artist) {
-	            foreach ($artist->songs as $song) {
+	            foreach ($artist->songs as $title => $song) {
 	                $wordCount = $song->getWordCount();
 	                // if (Settings->DEBUG) echo "Got this word count from song: ", json_encode($wordCount);
 	                $this->mergeWordCount($wordCount);
@@ -148,14 +148,14 @@ class WordCloud {
 
     function getSongsWith($word) {
     	$songs = array();
-        foreach ($this->artists as $name => $artist) {
-            foreach ($artist->songs as $song) {
+        foreach ($this->artists as $artist_name => $artist) {
+            foreach ($artist->songs as $title => $song) {
             	$count = $song->countWord($word);
             	if ($count!=0) {
-            		if (isset($songs[$name])) {
-            			$songs[$name][$song->title] = $count;
+            		if (isset($songs[$artist_name])) {
+            			$songs[$artist_name][$title] = $count;
             		} else {
-            			$songs[$name] = array($song->title => $count);
+            			$songs[$artist_name] = array($title => $count);
             		}
             	}
 			}

@@ -4,7 +4,12 @@
 
 	session_start();
 	$WC = $_SESSION['WC'];
-	if (isset($_GET['searched-word'])) $searched_word = $_GET['searched-word'];
+	if (isset($_GET['searched-word'])) {
+		$searched_word = $_GET['searched-word'];
+		$_SESSION['searched_word'] = $searched_word;
+	} else {
+		$searched_word = $_SESSION['searched_word'];
+	}
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +44,7 @@
 										foreach ($songs as $artist => $a_songs) {
 											echo "<h2>{$artist}</h2>";
 											foreach ($a_songs as $song => $count) {
-												echo "<li><a href='/LyricFloat/lyrics-page.php?{$song}&{$searched_word}'>$song ($count)</a></li>";
+												echo "<li><a href='/LyricFloat/lyrics-page.php?song_name={$song}&artist={$artist}'>$song ($count)</a></li>";
 											}
 										}
 										echo "</ul>";
