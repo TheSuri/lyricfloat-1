@@ -103,20 +103,19 @@
 		$("input[type=checkbox]").prop('checked', true);
 		$("#artist_name_form").submit();
 	};
-	// html2canvas(document.getElementById("wordcloud")).then(function(canvas) {
-	// 	document.body.appendChild(canvas);
-	// 	var dataUrl = canvas.toDataURL(); //get's image string
-	// 	window.open(dataUrl);             // display image
-	// 	$("#fb_image").attr("content", dataUrl);
-	// });
 	$(document).ready(function(){
 		$('#share_btn').click(function(e){
 			e.preventDefault();
-			FB.ui({
+				var dataUrl;
+				html2canvas(document.getElementById("wordcloud")).then(function(canvas) {
+					dataUrl = canvas.toDataURL(); //get's image string
+					$("#fb_image").attr("content", dataUrl);
+				});			
+				FB.ui({
 				method: 'feed',
 				name: 'LyricFloat word cloud!',
 				link: ' http://www.mushroomsensei.com/',
-				picture: 'http://www.osamuko.com/blog/wp-content/uploads/2009/09/8.jpg',
+				picture: dataUrl,
 				caption: 'Come and see the word cloud I generated.',
 				description: 'Such Lyric, so float, much cloud.',
 				message: ''
