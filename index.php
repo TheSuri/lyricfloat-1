@@ -34,7 +34,7 @@
 			
 			<div class="wrapper">
 			<div class="header">
-				<img src="assets/images/LyricFloat.png" height="35%" width="35%" />
+				<a href="/LyricFloat/"><img src="assets/images/LyricFloat.png" height="35%" width="35%" /></a>
 			</div>
 			<form  id="artist_name_form" action="word-cloud.php">
 				

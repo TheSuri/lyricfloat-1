@@ -25,7 +25,7 @@
 		<div class="container">
 			<div class="wrapper">
 				<div class="header">
-					<img src="assets/images/LyricFloat.png" height="35%" width="35%" />
+					<a href="/LyricFloat/"><img src="assets/images/LyricFloat.png" height="35%" width="35%" /></a>
 				</div>
 				<div id="wordcloud" class="word-cloud-wrap">
 					<?php
