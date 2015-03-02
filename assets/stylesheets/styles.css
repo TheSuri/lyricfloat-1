@@ -1,5 +1,6 @@
 * { 
 	margin: 0; 
+	overflow: auto;
 }
 
 a {
@@ -58,15 +59,17 @@ input[type="search"] {
 }
 
 .wrapper {
-	position: fixed;
-	top: 0px;
+	position: absolute;
+	top: 40%;
 	left: 50%;
 	width: 1000px;
-	transform: translate(-50%, 0%);
+	overflow: auto;
+	transform: translate(-50%, -50%);
 }
 
 .header {
 	font-size: 35px;
+	padding-top: 20%;
 }
 
 .alert{
@@ -98,6 +101,7 @@ input[type="search"] {
 
 .lyric-page-wrap{
 	min-width: 1000px;
+	min-height: 500px;
 	background-color: #FFFFFF;
 	text-align: center;
 	padding-top: 15px;
