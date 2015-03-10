@@ -7,8 +7,8 @@ class ArtistTest extends PHPUnit_Framework_TestCase
 	{
 		$artist = new Artist('name');
 		$this->assertEquals('name', $artist->name);
-		
-
+		$this->assertNotNull($artist->songs);
+		$this->assertEmpty($artist->songs);
 	}
 }
 ?>
