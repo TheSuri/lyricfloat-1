@@ -127,25 +127,28 @@
 		function (query, process) {
 			$.when(
 				$.ajax({
-				    url: 'http://ws.spotify.com/search/1/album.json?q=' + query.term,
+				    url: 'http://ws.spotify.com/search/1/artist.json?q=' + query.term,
 				})
 			).then(function (data) {
 				var process_data = [];
-				$.each(data.albums.slice(0, 4), function(i,item) {
+				$.each(data.artists.slice(0, 4), function(i, item) {
 				  $.when (
 				   $.ajax({
 				      url: 'https://embed.spotify.com/oembed/?url=' + item.href,
 				      dataType: 'jsonp'
 				   })
 				  ).then(function (image) {
-				    process_data.push( { label: item.artists[0].name } );
-				    process( process_data );
-				  });
+	                process_data.push( { label: item.name, image: image.thumbnail_url.replace("cover", "60")} );
+	                process( process_data );
+	              });
 				});
 			});
 		},
 		open: function(event, ui) {
 			event.preventDefault();
+			console.log(ui.item.image);
+			console.log($(this));
+			$(this).html("<img src="+ui.item.image+">");
 		},
 		select: function (e, ui) {
 			e.preventDefault();
@@ -155,5 +158,10 @@
 			noResults: '',
 			results: function() {}
 		}
-	});
+	}).data('ui-autocomplete')._renderItem = function(ul, item) {
+      return $('<li>')
+          .data( "ui-autocomplete-item", item)
+          .append('<img width="50" src="' + item.image + '"/>' + '<span class="ui-autocomplete-artist">' + item.label  + '</span>')
+          .appendTo(ul);
+    };
 </script>
