@@ -89,64 +89,67 @@
 	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1422647264695991&version=v2.0";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-	$(document).ready(function(){
-		var decodedPng;
-		html2canvas(document.getElementById("wordcloud"), { height: null }).then(function(canvas) {
-			var data = canvas.toDataURL("image/png");
-			var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
-            $.ajax({
-                url: 'https://api.imgur.com/3/image',
-                headers: {
-                    'Authorization': 'Client-ID ea64f4ea98a0bb8'
-                },
-                type: 'POST',
-                data: {
-                    'image': encodedPng,
-                    'type': 'base64'
-                },
-                success: function(response) {
-                    decodedPng = response.data.link;
-                }, error: function() {
-                    alert("Error while uploading...");
-                }
-            });
-			$('#share_btn').click(function(e){
-				e.preventDefault();
-				FB.ui({
-					method: 'feed',
-					name: 'LyricFloat word cloud!',
-					link: 'http://localhost/LyricFloat',
-					picture: decodedPng,
-					caption: 'Come and see the word cloud I generated.',
-					description: 'Such Lyric, so float, much cloud.'
-				});
-			});
-		});
-	});
+	// $(document).ready(function(){
+	// 	var decodedPng;
+	// 	html2canvas(document.getElementById("wordcloud"), { height: null }).then(function(canvas) {
+	// 		var data = canvas.toDataURL("image/png");
+	// 		var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
+ //            $.ajax({
+ //                url: 'https://api.imgur.com/3/image',
+ //                headers: {
+ //                    'Authorization': 'Client-ID ea64f4ea98a0bb8'
+ //                },
+ //                type: 'POST',
+ //                data: {
+ //                    'image': encodedPng,
+ //                    'type': 'base64'
+ //                },
+ //                success: function(response) {
+ //                    decodedPng = response.data.link;
+ //                }, error: function() {
+ //                    alert("Error while uploading...");
+ //                }
+ //            });
+	// 		$('#share_btn').click(function(e){
+	// 			e.preventDefault();
+	// 			FB.ui({
+	// 				method: 'feed',
+	// 				name: 'LyricFloat word cloud!',
+	// 				link: 'http://localhost/LyricFloat',
+	// 				picture: decodedPng,
+	// 				caption: 'Come and see the word cloud I generated.',
+	// 				description: 'Such Lyric, so float, much cloud.'
+	// 			});
+	// 		});
+	// 	});
+	// });
 	$('#search-box').autocomplete({
 		source:
 		function (query, process) {
 			$.when(
 				$.ajax({
-				    url: 'http://ws.spotify.com/search/1/album.json?q=' + query.term,
+				    url: 'http://ws.spotify.com/search/1/artist.json?q=' + query.term,
 				})
 			).then(function (data) {
 				var process_data = [];
-				$.each(data.albums.slice(0, 4), function(i,item) {
+				$.each(data.artists.slice(0, 4), function(i, item) {
 				  $.when (
 				   $.ajax({
 				      url: 'https://embed.spotify.com/oembed/?url=' + item.href,
 				      dataType: 'jsonp'
 				   })
 				  ).then(function (image) {
-				    process_data.push( { label: item.artists[0].name } );
-				    process( process_data );
-				  });
+	                process_data.push( { label: item.name, image: image.thumbnail_url.replace("cover", "60")} );
+	                process( process_data );
+	              });
 				});
 			});
 		},
 		open: function(event, ui) {
 			event.preventDefault();
+			console.log(ui.item.image);
+			console.log($(this));
+			$(this).html("<img src="+ui.item.image+">");
 		},
 		select: function (e, ui) {
 			e.preventDefault();
@@ -156,5 +159,10 @@
 			noResults: '',
 			results: function() {}
 		}
-	});
+	}).data('ui-autocomplete')._renderItem = function(ul, item) {
+      return $('<li>')
+          .data( "ui-autocomplete-item", item)
+          .append('<img width="50" src="' + item.image + '"/>' + '<span class="ui-autocomplete-artist">' + item.label  + '</span>')
+          .appendTo(ul);
+    };
 </script>

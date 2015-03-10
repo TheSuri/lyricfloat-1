@@ -3,45 +3,34 @@ Given(/^I am on the word cloud page$/) do
 end
 
 Given(/^there is an existing word cloud/) do
-  find_by_id("wordcloud").has_css?('a').count > 0
+  if find_by_id("wordcloud").has_css?('a')
+    true
+  else
+    visit "/LyricFloat/word-cloud.php?artist_name=coldplay"
+  end
 end
 
-# Then(/^I should see a search text box$/) do
-#   page.has_field?('artist_name')
-# end
+Then(/^I should see words$/) do
+  if find_by_id("wordcloud").has_css?('a')
+    !find_by_id('wordcloud').first('a').text().nil?
+  else false
+  end
+end
 
-# Then(/^I should see a submit button$/) do
-#   page.has_button?('Submit')
-#   # pending # express the regexp above with the code you wish you had
-# end
+Then(/^I should be able to click a word$/) do
+  find("#wordcloud").has_link?(find_by_id("wordcloud").first('a').text())
+end
 
-# Given(/^there exists a search text box$/) do
-#   page.has_field?('artist_name')  
-# end
+Then(/^there should not exist the word "(.*?)"$/) do |word|
+  find("#wordcloud").all('a', :text => word).nil?
+end
 
-# Then(/^I should see autocompleted artists$/) do
-#   page.assert_selector('.ui-autocomplete')
-# end
+Given(/^I create a word cloud of "(.*?)"$/) do |artist|
+  visit "/LyricFloat/word-cloud.php?artist_name=my+favorite+highway"
+end
 
-# Given(/^that artists names autocomplete$/) do
-#   if page.has_field?('artist_name')
-#     fill_in 'artist_name', :with => 'Usher'
-#     page.find('.ui-autocomplete').first('li').text()=='Usher'
-#   end
-# end
-
-# When(/^I type "(.*?)" in the search text box$/) do |value|
-#   if page.has_field?('artist_name')
-#     fill_in 'artist_name', :with => value
-#   end
-# end
-
-# Then(/^I should see a picture next to the autocomplete results$/) do
-#   within('.ui-autocomplete') do 
-#     assert_selector('img', :minimum => 1)
-#   end
-# end
-
-# Given(/^there exists a submit button$/) do
-#   page.has_button?('Submit')
-# end
+Then(/^there should be more "(.*?)" than "(.*?)"$/) do |word1, word2|
+  word1_size = page.evaluate_script("$(\"span:contains('"+word1+"')\").css('font-size')");
+  word2_size = page.evaluate_script("$(\"span:contains('"+word2+"')\").css('font-size')");
+  (word1_size > word2_size)
+end

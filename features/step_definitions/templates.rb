@@ -7,6 +7,6 @@ When(/^I click the "(.*?)" button$/) do |element|
     click_button(element)
 end
 
-Then(/^I should be taken to the "(.*?)" page/) do |page|
+Then(/^I should be on the "(.*?)" page/) do |page|
 	has_title?(page)
 end
