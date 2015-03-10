@@ -41,3 +41,7 @@ end
 Given(/^there exists a submit button$/) do
   page.has_button?('Submit')
 end
+
+Given(/^there exists an add to cloud button$/) do
+  page.has_button?('Add To Cloud')
+end
