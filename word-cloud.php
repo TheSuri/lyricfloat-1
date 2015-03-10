@@ -89,40 +89,40 @@
 	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1422647264695991&version=v2.0";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-	$(document).ready(function(){
-		var decodedPng;
-		html2canvas(document.getElementById("wordcloud"), { height: null }).then(function(canvas) {
-			var data = canvas.toDataURL("image/png");
-			var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
-            $.ajax({
-                url: 'https://api.imgur.com/3/image',
-                headers: {
-                    'Authorization': 'Client-ID ea64f4ea98a0bb8'
-                },
-                type: 'POST',
-                data: {
-                    'image': encodedPng,
-                    'type': 'base64'
-                },
-                success: function(response) {
-                    decodedPng = response.data.link;
-                }, error: function() {
-                    alert("Error while uploading...");
-                }
-            });
-			$('#share_btn').click(function(e){
-				e.preventDefault();
-				FB.ui({
-					method: 'feed',
-					name: 'LyricFloat word cloud!',
-					link: 'http://localhost/LyricFloat',
-					picture: decodedPng,
-					caption: 'Come and see the word cloud I generated.',
-					description: 'Such Lyric, so float, much cloud.'
-				});
-			});
-		});
-	});
+	// $(document).ready(function(){
+	// 	var decodedPng;
+	// 	html2canvas(document.getElementById("wordcloud"), { height: null }).then(function(canvas) {
+	// 		var data = canvas.toDataURL("image/png");
+	// 		var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
+ //            $.ajax({
+ //                url: 'https://api.imgur.com/3/image',
+ //                headers: {
+ //                    'Authorization': 'Client-ID ea64f4ea98a0bb8'
+ //                },
+ //                type: 'POST',
+ //                data: {
+ //                    'image': encodedPng,
+ //                    'type': 'base64'
+ //                },
+ //                success: function(response) {
+ //                    decodedPng = response.data.link;
+ //                }, error: function() {
+ //                    alert("Error while uploading...");
+ //                }
+ //            });
+	// 		$('#share_btn').click(function(e){
+	// 			e.preventDefault();
+	// 			FB.ui({
+	// 				method: 'feed',
+	// 				name: 'LyricFloat word cloud!',
+	// 				link: 'http://localhost/LyricFloat',
+	// 				picture: decodedPng,
+	// 				caption: 'Come and see the word cloud I generated.',
+	// 				description: 'Such Lyric, so float, much cloud.'
+	// 			});
+	// 		});
+	// 	});
+	// });
 	$('#search-box').autocomplete({
 		source:
 		function (query, process) {

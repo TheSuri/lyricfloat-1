@@ -1,13 +1,8 @@
 Feature: Generate WC
-	Test for geneartion of a word cloud and frequency of words
+    Test for geneartion of a word cloud and frequency of words
 
 
-    Scenario: Size based on frequency
-        Given I am on the word cloud page
-        And I create a word cloud of "My Favorite Highway"
-        Then there should be more "yo" than "drive"
-
-   Scenario: Display Words
+    Scenario: Display Words
         Given I am on the word cloud page
         And there is an existing word cloud
         Then I should see words
@@ -25,4 +20,9 @@ Feature: Generate WC
         Then there should not exist the word "of"
         Then there should not exist the word "to"
         Then there should not exist the word "of"
-        Then there should not exist the word "and"        
+        Then there should not exist the word "and"
+        
+    Scenario: Size based on frequency
+        Given I am on the word cloud page
+        And I create a word cloud of "My Favorite Highway"
+        Then there should be more "highway" than "touch"

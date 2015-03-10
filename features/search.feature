@@ -31,4 +31,4 @@ Feature: Searching
             And there exists a submit button
         When I type "Avicii" in the search text box
             And I click the "Submit" button
-        Then I should be taken to the "LyricFloat - Word Cloud" page
+        Then I should be on the "LyricFloat - Word Cloud" page
