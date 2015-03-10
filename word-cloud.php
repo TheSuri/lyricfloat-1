@@ -1,7 +1,8 @@
 <?php  
 	require_once('app/WordCloud.php');
 	require_once('app/search_rapgenius.php');
-
+	require_once('RapGenius-PHP-master/src/rapgenius.php');
+	require_once('RapGenius-PHP-master/src/rap_genius_wrapper.php');
 	session_start();
 	$WC = $_SESSION['WC'];
 ?>
@@ -28,7 +29,7 @@
 						    $artist = $_GET['artist_name'];
 							try {
 							    if (!isset($WC->artists[$artist])) {
-									$data = getLyrics(array($artist));
+									$data = getLyrics(array($artist), new RapGenius());
 									if (isset($_GET['additional_artist']) && $_GET['additional_artist']) {
 										$WC->mergeData($data);
 									}
@@ -36,6 +37,7 @@
 										$WC = new WordCloud();
 										$WC->generateCloud($data);
 									}
+									array_splice($WC->words, $WC->maxNumWords);
 									$_SESSION['WC'] = $WC;
 							    }
 								echo $WC->generateWC();
