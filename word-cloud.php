@@ -36,6 +36,7 @@
 									$_SESSION['WC'] = $WC;
 							    }
 								echo $WC->generateWC();
+								echo json_encode($WC);
 							} catch (Exception $e) {
 								echo $e->getMessage();
 							}
