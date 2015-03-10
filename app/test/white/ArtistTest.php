@@ -5,8 +5,10 @@ class ArtistTest extends PHPUnit_Framework_TestCase
 {	
 	public function testArtistCreation()
 	{
-		$artist = new Artist('name');
-		$this->assertEquals('name', $artist->name);
+		$name = 'name';
+		
+		$artist = new Artist($name);
+		$this->assertEquals($name, $artist->name);
 		$this->assertNotNull($artist->songs);
 		$this->assertEmpty($artist->songs);
 	}
