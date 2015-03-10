@@ -33,7 +33,7 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 	    	'When I was young' => new Song('12fds54232f', 'When I was young', 'I wish I was young again'));
 	    $song = $this->artist->songs['All the small things'];
 	    $this->wordcount = $song->getWordCount();
-	    $this->words = array('Lots' => new WC_Word('Lots', 1),
+	    $this->words = array('lots' => new WC_Word('lots', 1),
 	    					'of' => new WC_Word('of',1),
 	    					'small' => new WC_Word('small',1),
 	    					'things' => new WC_Word('things',1));
@@ -42,7 +42,7 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 	public function testWordCloud()
 	{
 		$wordcloud = new WordCloud($data);
-		$this->assertEmpty($this->stopwords);
+		$this->assertNotEmpty($wordcloud->stopwords);
 		
 		return $wordcloud;
 	}
@@ -63,8 +63,8 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 	 */
     public function testMergeWordCount(WordCloud $wordcloud) {
     	$wordcloud->mergeWordCount($this->wordcount);
-    	print_r(array_values($wordcloud->words));
-    	$this->assertEquals($wordcloud->words['Lots']->freq, $this->words['Lots']->freq);
+    	
+    	$this->assertEquals($wordcloud->words['lots']->freq, $this->words['lots']->freq);
 
     	return $wordcloud;
     }
