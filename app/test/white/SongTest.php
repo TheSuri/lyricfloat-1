@@ -17,7 +17,7 @@ class SongTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetWordCount(Song $song)
 	{
-		$this->assertEquals('multiple', $song->lyrics);
+		$this->assertEquals('multiple lyric', $song->lyrics);
 	}
 }
-?>gi
+?>
