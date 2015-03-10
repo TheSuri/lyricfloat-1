@@ -21,11 +21,13 @@ function getLyrics($artist_results, $rapgenius)
         $songs = array();
 
         foreach ($song_results as $song) {
-            $songs[] = array(
-                'title' => $song['result']['title'],
-                'id' => $song['result']['id'],
-                'lyrics' => lyricsByID($song['result']['id'])['lyrics']
-            );
+			if ($song['result']['primary_artist']['name'] == $artist) {
+				$songs[] = array(
+					'title' => $song['result']['title'],
+					'id' => $song['result']['id'],
+					'lyrics' => lyricsByID($song['result']['id'])['lyrics']
+				);
+			}
         }
         $artists[$artist] = $songs;
     }
