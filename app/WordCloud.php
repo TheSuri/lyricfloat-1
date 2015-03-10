@@ -8,7 +8,7 @@ class WordCloud {
     public $artists = array();
     public $maxNumWords = 250;
     public $words = array();
-    private $stopwords = array();
+    public $stopwords = array();
 
     function __construct() {
     	// STOPWORD LIST IS THE DEFAULT MySQL STOPWORDS
