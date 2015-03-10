@@ -167,7 +167,7 @@ class WordCloud {
     	return $songs;
     }
 
-	private function standardDeviation($words, $mean) {
+	function standardDeviation($words, $mean) {
 		$sum = 0;
 		foreach($words as $word => $freq) {
 			$sum += pow($freq-$mean, 2);
