@@ -129,6 +129,11 @@ class WordCloud {
 	    $fmin = 0; /* Minimum font size */
 	    $mean = array_sum($words) / count($words);
 	    $sd = $this->standardDeviation($words, $mean);
+		if ($sd == 0)
+		{
+			//Catch division by 0
+			$sd = 1;
+		}
 
 	    foreach ($words as $word => $freq) {
 	    	$wordSD = (($freq - $mean) / $sd);
