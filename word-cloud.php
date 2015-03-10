@@ -29,10 +29,13 @@
 							try {
 							    if (!isset($WC->artists[$artist])) {
 									$data = getLyrics(array($artist));
-									if (isset($_GET['additional_artist']) && $_GET['additional_artist']) 
+									if (isset($_GET['additional_artist']) && $_GET['additional_artist']) {
 										$WC->mergeData($data);
-									else 
-										$WC = new WordCloud($data);
+									}
+									else { 
+										$WC = new WordCloud();
+										$WC->generateCloud($data);
+									}
 									$_SESSION['WC'] = $WC;
 							    }
 								echo $WC->generateWC();
