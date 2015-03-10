@@ -42,7 +42,7 @@ class SongTest extends PHPUnit_Framework_TestCase
 		//Sanity check
 		$this->assertEquals($this->lyrics, $song->lyrics);
 		
-		$this->assertEquals(1, $song->countWord('multiple'));
+		$this->assertEquals(1, $song->countWord('multsiple'));
 		$this->assertEquals(2, $song->countWord('lyrics'));
 		$this->assertEquals(0, $song->countWord('missing'));
 	}
