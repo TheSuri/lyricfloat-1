@@ -41,7 +41,3 @@ end
 Given(/^there exists a submit button$/) do
   page.has_button?('Submit')
 end
-
-Then(/^a POST request should be sent to 'localhost\/somewhere'$/) do
-  pending # express the regexp above with the code you wish you had
-end
