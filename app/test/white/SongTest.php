@@ -29,6 +29,7 @@ class SongTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals(1, $wordcount['multiple']);
 		$this->assertEquals(2, $wordcount['lyrics']);
 		$this->assertEquals(2, count($wordcount));
+		$this->assertArrayNotHasKey('missing', $wordcount);
 		
 		return $song;
 	}
