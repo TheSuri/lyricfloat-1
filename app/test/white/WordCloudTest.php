@@ -191,7 +191,7 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 	 * @depends testGenerateCloud
 	 * @depends testFilterStopwords
 	 */
-	public function testGenerateWC($wordcloud, $words)
+	public function testGenerateWCNormative($wordcloud, $words)
 	{
 		$cloud = $wordcloud->generateWC();
 		foreach($words as $word => $frq)
@@ -200,6 +200,44 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 			$this->assertContains($wordcloud->words[$word]->color, $cloud);
 			$this->assertContains($word, $cloud);
 			$this->assertContains($wordcloud->words[$word]->color . ";\">" . $word, $cloud);
+		}
+	}
+	
+	public function testGenerateWCManyWords()
+	{
+		$words = "";
+		for($i = 11; $i < 300; $i++)
+		{
+			$words .= $i . " ";
+			//Adjust frequency slightly
+			if ($i <= 260)
+			{
+				$words .= $i . " ";
+			}
+		}
+		
+		$data = array('Blink 182' => array(
+			array(
+				'id' => 'fdsafds324fds',
+				'title' => 'All the small things',
+				'lyrics' => $words
+				)
+			)
+		);
+		$wordcloud = new WordCloud();
+		$wordcloud->generateCloud($data);
+		
+		$cloud = $wordcloud->generateWC();
+		for ($word = 11; $word <= 260; $word++)
+		{
+			//Assert words exist in cloud
+			$this->assertContains($word . "", $cloud);
+		}
+		
+		for ($word = 261; $word < 300; $word++)
+		{
+			//Assert less popular words not in cloud
+			$this->assertNotContains($word . "", $cloud);
 		}
 	}
 
