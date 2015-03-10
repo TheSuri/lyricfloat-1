@@ -7,6 +7,7 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 
 	protected $artist;
 	protected $mean = 1;
+	protected $word = 'small';
 
     protected $data = array('Blink 182' => array(
     	array(
@@ -162,6 +163,16 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 		$wordcloud = $this->setUpTestMergeWordCount();
 		$stdDev = $wordcloud->standardDeviation($words, $this->mean);
 		$this->assertEquals($stdDev, 0);
+	}
+
+	/**
+	 * @depends testMergeData
+	 */
+	public function testGetSongsWith(WordCloud $wordcloud)
+	{
+		$songs = $wordcloud->getSongsWith($this->word);
+		$this->assertEquals($songs, array('Blink 182' =>
+				array('All the small things' => 1)));
 	}
 
 	// /**
