@@ -37,6 +37,7 @@
 										$WC = new WordCloud();
 										$WC->generateCloud($data);
 									}
+									array_splice($WC->words, $WC->maxNumWords);
 									$_SESSION['WC'] = $WC;
 							    }
 								echo $WC->generateWC();
