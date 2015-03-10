@@ -33,5 +33,6 @@ function getLyrics($artist_results, $rapgenius)
 	
     return $artists;
 }
+
 ?>
 

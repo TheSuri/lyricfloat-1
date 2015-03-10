@@ -31,7 +31,9 @@ class Song {
 
     function countWord($word) {
     	$wordCount = $this->getWordCount();
-    	if (isset($wordCount[$word])) return $wordCount[$word];
+    	if (isset($wordCount[$word])) {
+			return $wordCount[$word];
+		}
     	return 0;
     }
 }
