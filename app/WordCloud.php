@@ -112,6 +112,7 @@ class WordCloud {
     }
 
     function getFreqArray($words) {
+		$freq_array = array();
     	foreach ($words as $word => $wc_word) {
 	        if (!in_array(strtolower($word), $this->stopwords, TRUE)) {
 	            $freq_array[$word] = $wc_word->freq;
@@ -121,6 +122,7 @@ class WordCloud {
     }
 
 	function filter_stopwords() {
+		$filtered_words = array();
 	    foreach ($this->words as $word => $wc_word) {
 	        if (!in_array(strtolower($word), $this->stopwords, TRUE)) {
 	            $filtered_words[$word] = $wc_word;
@@ -139,7 +141,8 @@ class WordCloud {
 
     	arsort($words);
 
-    	array_splice($words, $this->maxNumWords);
+		//Unnecessary because we limit the max number in the below for loop
+    	//array_splice($words, $this->maxNumWords);
 
 	    /* This word cloud generation algorithm was taken from the Wikipedia page on "word cloud"
 	       with some minor modifications to the implementation */
@@ -165,13 +168,14 @@ class WordCloud {
 	    	// ratio of standard deviation uses 1.2 because we assume that our data will
 	    	// typically be no more than 1.2 standard deviations away from each other. 
 	    	// if there is an outlier, we just set it to the min or max font size.
-            $color = $this->words[$word]->color;
+            if (!isset($this->words[$word])) continue;
+			$color = $this->words[$word]->color;
             array_push($cloud, "<a href='/LyricFloat/song-page.php?{$artist_url}&searched-word={$word}'><span style=\"font-size: {$font_size}em; color: {$color};\">$word</span></a> ");
             $tags++;
             if ($tags >= $this->maxNumWords) break;
 	    }
 
-	    shuffle($cloud);
+	    //shuffle($cloud);
 	    	    
 	    return implode('', $cloud);
     }
@@ -196,7 +200,7 @@ class WordCloud {
 	function standardDeviation($words, $mean) {
 		$sum = 0;
 		foreach($words as $word => $freq) {
-			$sum += pow($freq-$mean, 2);
+			$sum +=pow($freq-$mean, 2);
 		}
 		return sqrt($sum / count($words));
 	}

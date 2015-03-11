@@ -34,7 +34,5 @@ function getLyrics($artist_results, $rapgenius)
     return $artists;
 }
 
-require_once('RapGenius-PHP-master/src/rapgenius.php');
-
 ?>
 

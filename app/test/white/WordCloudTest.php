@@ -163,7 +163,6 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 
     	return $wordcloud;
     }
-       
 
 	/**
 	 * @depends testMergeData
@@ -181,13 +180,35 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 		
 		return $wordcloud;
 	}
+    
+	/**
+	 * @depends testCountWordFreq
+	 */
+	public function testGetFreqArray(WordCloud $wordcloud)
+	{
+		$words = $wordcloud->getFreqArray($wordcloud->words);
+		
+		$this->assertArrayHasKey('lots', $words);
+		$this->assertArrayHasKey('small', $words);
+		$this->assertArrayHasKey('things', $words);
+		$this->assertArrayHasKey('young', $words);
+
+		$this->assertArrayNotHasKey('wish', $words);
+		$this->assertArrayNotHasKey('again', $words);
+		$this->assertArrayNotHasKey('of', $words);
+		$this->assertArrayNotHasKey('i', $words);
+		$this->assertArrayNotHasKey('was', $words);
+
+		return $words;
+	}
 
 	/**
 	 * @depends testCountWordFreq
 	 */
 	public function testFilterStopwords(WordCloud $wordcloud)
 	{
-		$words = $wordcloud->filter_stopwords();
+		$wordcloud->filter_stopwords();
+		$words = $wordcloud->words;
 		$this->assertArrayHasKey('lots', $words);
 		$this->assertArrayHasKey('small', $words);
 		$this->assertArrayHasKey('things', $words);
@@ -212,6 +233,7 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 		
 		//We know these steps individually work because of the other tests
     	$wordcloud2->mergeData($this->data);
+		$wordcloud2->filter_stopwords();
 		$wordcloud2->countWordFreq();
 		
 		$this->assertEquals($wordcloud1->artists, $wordcloud2->artists);
@@ -276,7 +298,7 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 
 	/**
 	 * @dataProvider wordcloudProvider
-	 * @depends testFilterStopwords
+	 * @depends testGetFreqArray
 	 */
 	public function testStandardDeviation(WordCloud $wordcloud, $words)
 	{
