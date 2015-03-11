@@ -186,6 +186,17 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testGetFreqArray(WordCloud $wordcloud)
 	{
+		$this->assertArrayHasKey('lots', $wordcloud->words);
+		$this->assertArrayHasKey('small', $wordcloud->words);
+		$this->assertArrayHasKey('things', $wordcloud->words);
+		$this->assertArrayHasKey('young', $wordcloud->words);
+
+		$this->assertArrayHasKey('wish', $wordcloud->words);
+		$this->assertArrayHasKey('again', $wordcloud->words);
+		$this->assertArrayHasKey('of', $wordcloud->words);
+		$this->assertArrayHasKey('i', $wordcloud->words);
+		$this->assertArrayHasKey('was', $wordcloud->words);
+		
 		$words = $wordcloud->getFreqArray($wordcloud->words);
 		
 		$this->assertArrayHasKey('lots', $words);
@@ -207,8 +218,20 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testFilterStopwords(WordCloud $wordcloud)
 	{
+		$this->assertArrayHasKey('lots', $wordcloud->words);
+		$this->assertArrayHasKey('small', $wordcloud->words);
+		$this->assertArrayHasKey('things', $wordcloud->words);
+		$this->assertArrayHasKey('young', $wordcloud->words);
+
+		$this->assertArrayHasKey('wish', $wordcloud->words);
+		$this->assertArrayHasKey('again', $wordcloud->words);
+		$this->assertArrayHasKey('of', $wordcloud->words);
+		$this->assertArrayHasKey('i', $wordcloud->words);
+		$this->assertArrayHasKey('was', $wordcloud->words);
+		
 		$wordcloud->filter_stopwords();
 		$words = $wordcloud->words;
+		
 		$this->assertArrayHasKey('lots', $words);
 		$this->assertArrayHasKey('small', $words);
 		$this->assertArrayHasKey('things', $words);
