@@ -7,7 +7,6 @@
 	$WC = $_SESSION['WC'];
 ?>
 
-
 <!DOCTYPE html>
 	<head>
 		<title>LyricFloat - Word Cloud</title>
@@ -37,7 +36,6 @@
 										$WC = new WordCloud();
 										$WC->generateCloud($data);
 									}
-									array_splice($WC->words, $WC->maxNumWords);
 									$_SESSION['WC'] = $WC;
 							    }
 								echo $WC->generateWC();

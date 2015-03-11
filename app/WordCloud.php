@@ -20,6 +20,7 @@ class WordCloud {
     	try {
 	    	$err = $this->mergeData($data);
 	    	$err = $this->countWordFreq();
+	    	$this->filter_stopwords();
 		} catch (Exception $e) {
 			throw $e; //@codeCoverageIgnore
 		}
@@ -102,24 +103,35 @@ class WordCloud {
         }
     }
 
+    function getFreqArray($words) {
+    	foreach ($words as $word => $wc_word) {
+	        if (!in_array(strtolower($word), $this->stopwords, TRUE)) {
+	            $freq_array[$word] = $wc_word->freq;
+	        }
+	    }
+	    return $freq_array;
+    }
+
 	function filter_stopwords() {
 	    foreach ($this->words as $word => $wc_word) {
 	        if (!in_array(strtolower($word), $this->stopwords, TRUE)) {
-	            $filtered_words[$word] = $wc_word->freq;
+	            $filtered_words[$word] = $wc_word;
 	        }
 	    }
-	    return $filtered_words;
+	    $this->words = $filtered_words;
 	}
 
     // Takes the current $words, and generates
     // a word cloud utilizing $maxNumWords
     function generateWC() {
-    	$words = $this->filter_stopwords();
+    	$words = $this->getFreqArray($this->words);
     	$tags = 0;
 	    $cloud = array();
     	if (count($words)==0) return implode('', $cloud);
 
     	arsort($words);
+
+    	array_splice($words, $this->maxNumWords);
 
 	    /* This word cloud generation algorithm was taken from the Wikipedia page on "word cloud"
 	       with some minor modifications to the implementation */
@@ -196,5 +208,14 @@ class WordCloud {
 		return $random; 
 	} 
 }
+
+require_once('search_rapgenius.php');
+require_once(dirname(__FILE__).'/../RapGenius-PHP-master/src/rapgenius.php');
+require_once(dirname(__FILE__).'/../RapGenius-PHP-master/src/rap_genius_wrapper.php');
+
+$data = getLyrics(array('Dolores Hayden'), new RapGenius());
+$WC = new WordCloud();
+$WC->generateCloud($data);
+$WC->generateWC();
 
 ?>
