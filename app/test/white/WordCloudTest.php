@@ -23,9 +23,40 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 
     protected $wordcount;
     protected $words;
-  
+	public static $coverage;
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public static function setUpBeforeClass()
+	{
+		WordCloudTest::$coverage = new PHP_CodeCoverage();
+	}
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public function tearDown()
+	{
+		WordCloudTest::$coverage->stop();
+	}
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public static function tearDownAfterClass()
+	{
+		$writer = new PHP_CodeCoverage_Report_Clover;
+		$writer->process(WordCloudTest::$coverage, 'coverage/WordCloudTest.xml');
+		
+		$writer = new PHP_CodeCoverage_Report_HTML;
+		$writer->process(WordCloudTest::$coverage, 'coverage/WordCloudTest');
+	}
+	/**
+	 * @codeCoverageIgnore
+	 */
     protected function setUp()
     {
+		WordCloudTest::$coverage->start($this);
     	$this->artist = new Artist('Blink 182');
 
 	    $this->artist->songs = array(
@@ -70,8 +101,10 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($wordcloud->artists['Blink 182']->songs['All the small things'], $this->artist->songs['All the small things']);
     	return $wordcloud;
     }
-	
-	//Function to provide a starting word cloud to tests
+	/**
+	 * Function to provide a starting word cloud to tests
+	 * @codeCoverageIgnore
+	 */
 	public function wordcloudProvider()
 	{
 		$wordcloud = new WordCloud();
@@ -259,6 +292,35 @@ class WordCloudTest extends PHPUnit_Framework_TestCase
 		$songs = $wordcloud->getSongsWith($this->word);
 		$this->assertEquals($songs, array('Blink 182' =>
 				array('All the small things' => 1)));
+	}
+	
+	public function testGetSongsWithMultipleSongs()
+	{
+		$data = array('Blink 182' => array(
+			array(
+				'id' => 'fdsafds324fds',
+				'title' => 'All the small things',
+				'lyrics' => 'Lots of small things'
+				),
+			array(
+				'id' => 'fdsafds324fds',
+				'title' => 'All the smaller things',
+				'lyrics' => 'Lots of of small things'
+				),
+			array(
+				'id' => '12fds54232f',
+				'title' => 'When I was young',
+				'lyrics' => 'I wish I was young again'
+				)
+			)
+		);
+		
+		$wordcloud = new WordCloud();
+    	$wordcloud->mergeData($data);
+		
+		$songs = $wordcloud->getSongsWith("of");
+		$this->assertEquals($songs, array('Blink 182' =>
+				array('All the small things' => 1, 'All the smaller things' => 2)));
 	}
 }
 ?>

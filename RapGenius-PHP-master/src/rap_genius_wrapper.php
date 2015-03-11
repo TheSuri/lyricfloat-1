@@ -79,6 +79,8 @@ class RapGenius
     }
     
     /**
+	 * This is not used by us
+	 * @codeCoverageIgnore
      * @param string $query_string a utf-8 artist query string
      * @return MusicXMatch
      */
@@ -129,7 +131,10 @@ class RapGenius
         
     }
     
-    
+    /**
+	 * This is not used by us
+	 * @codeCoverageIgnore
+	 */
     public function result()
     {
         return $this->result;

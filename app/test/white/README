@@ -1,0 +1,26 @@
+In order to run these tests you need a few things:
+1) php5-cli
+2) phpunit
+3) xdebug
+
+(Let me know if this doesn't work, and I'll add more suggestions)
+
+1. Make sure you have php installed. 'sudo apt-get install php5-cli' should handle this.
+2. Install phpunit. The instructions are located at https://phpunit.de/manual/current/en/installation.html
+	2.1 wget https://phar.phpunit.de/phpunit.phar
+	2.2 chmod +x phpunit.phar
+	2.3 sudo mv phpunit.phar /usr/local/bin/phpunit
+	2.4 phpunit --version
+		2.4.1 This should display "PHPUnit x.y.z etc. etc."
+3. Install xdebug. The instructions are located at xdebug.org/docs/install
+	3.1 git clone git://github.com/xdebug/xdebug.git
+	3.2 cd into the xdebug folder
+	3.3 phpize
+		3.3.1 If you don't have phpize, try 'sudo apt-get install php5-dev'
+	3.4 ./configure --enable-xdebug
+	3.5 make
+	3.6 make install
+		3.6.1 If any steps don't work, try as root (sudo xyz, etc.)
+4. Add the following line to etc/php5/cli/php.ini or wherever php.ini is:
+	zend_extension="/path/to/xdebug/modules/xdebug.so"
+5. Now run ./test.sh > ../output and you should get some super cool test results 

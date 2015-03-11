@@ -6,7 +6,46 @@ class SongTest extends PHPUnit_Framework_TestCase
 	protected $id = 'id';
 	protected $title = 'title';
 	protected $lyrics = 'multiple Lyrics lyrics';
+	public static $coverage;
 	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public static function setUpBeforeClass()
+	{
+		SongTest::$coverage = new PHP_CodeCoverage();
+	}
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public function setUp()
+	{
+		SongTest::$coverage->start($this);
+	}
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public function tearDown()
+	{
+		SongTest::$coverage->stop();
+	}
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public static function tearDownAfterClass()
+	{
+		$writer = new PHP_CodeCoverage_Report_Clover;
+		$writer->process(SongTest::$coverage, 'coverage/SongTest.xml');
+		
+		$writer = new PHP_CodeCoverage_Report_HTML;
+		$writer->process(SongTest::$coverage, 'coverage/SongTest');
+	}
+	
+	/**
+	 * @covers Song::__construct
+	 */
 	public function testSongCreation()
 	{
 		$song = new Song($this->id, $this->title, $this->lyrics);
@@ -19,6 +58,7 @@ class SongTest extends PHPUnit_Framework_TestCase
 	
 	/**
 	 * @depends testSongCreation
+	 * @covers Song::getWordCount
 	 */
 	public function testGetWordCount(Song $song)
 	{

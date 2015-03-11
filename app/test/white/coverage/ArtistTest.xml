@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1426057449">
+  <project timestamp="1426057449">
+    <file name="/media/sf_lyricfloat/LyricFloat/app/Artist.php">
+      <class name="Artist" namespace="global">
+        <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </class>
+      <line num="9" type="method" name="__construct" crap="1" count="1"/>
+      <line num="10" type="stmt" count="1"/>
+      <line num="11" type="stmt" count="1"/>
+      <metrics loc="13" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+    </file>
+    <file name="/media/sf_lyricfloat/LyricFloat/app/Song.php">
+      <class name="Song" namespace="global">
+        <metrics methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="0" elements="22" coveredelements="0"/>
+      </class>
+      <line num="9" type="method" name="__construct" crap="2" count="0"/>
+      <line num="10" type="stmt" count="0"/>
+      <line num="11" type="stmt" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <line num="13" type="stmt" count="0"/>
+      <line num="17" type="method" name="getWordCount" crap="12" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <line num="19" type="stmt" count="0"/>
+      <line num="20" type="stmt" count="0"/>
+      <line num="21" type="stmt" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="32" type="method" name="countWord" crap="6" count="0"/>
+      <line num="33" type="stmt" count="0"/>
+      <line num="34" type="stmt" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <metrics loc="40" ncloc="34" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="0" elements="22" coveredelements="0"/>
+    </file>
+    <file name="/media/sf_lyricfloat/LyricFloat/app/test/white/ArtistTest.php">
+      <class name="ArtistTest" namespace="global">
+        <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+      </class>
+      <line num="43" type="method" name="testArtistCreation" crap="1" count="1"/>
+      <line num="45" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <metrics loc="52" ncloc="40" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+    </file>
+    <metrics files="3" loc="105" ncloc="87" classes="3" methods="5" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="8" elements="32" coveredelements="10"/>
+  </project>
+</coverage>
