@@ -1,41 +1,55 @@
+Running Test APITest.php
+﻿PHPUnit 4.5.0 by Sebastian Bergmann and contributors.
+
+.....
+
+Time: 295 ms, Memory: 1.75Mb
+
+OK (5 tests, 9 assertions)
+
 Running Test ArtistTest.php
 PHPUnit 4.5.0 by Sebastian Bergmann and contributors.
 
 .
 
-Time: 45 ms, Memory: 1.75Mb
+Time: 51 ms, Memory: 1.75Mb
 
 OK (1 test, 3 assertions)
+
 Running Test SearchRapgeniusTest.php
 
 PHPUnit 4.5.0 by Sebastian Bergmann and contributors.
 
 ..
 
-Time: 1.85 seconds, Memory: 5.00Mb
+Time: 1.78 seconds, Memory: 5.00Mb
 
 OK (2 tests, 6 assertions)
+
 Running Test SongTest.php
 PHPUnit 4.5.0 by Sebastian Bergmann and contributors.
 
 ...
 
-Time: 43 ms, Memory: 1.75Mb
+Time: 59 ms, Memory: 1.75Mb
 
 OK (3 tests, 12 assertions)
+
 Running Test WC_WordTest.php
 PHPUnit 4.5.0 by Sebastian Bergmann and contributors.
 
 .
 
-Time: 43 ms, Memory: 1.75Mb
+Time: 51 ms, Memory: 1.75Mb
 
 OK (1 test, 3 assertions)
+
 Running Test WordCloudTest.php
 PHPUnit 4.5.0 by Sebastian Bergmann and contributors.
 
 ..........
 
-Time: 66 ms, Memory: 2.25Mb
+Time: 74 ms, Memory: 2.25Mb
 
 OK (10 tests, 406 assertions)
+
