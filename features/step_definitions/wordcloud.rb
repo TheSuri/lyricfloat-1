@@ -1,13 +1,5 @@
 Given(/^I am on the word cloud page$/) do
-  visit "/LyricFloat/word-cloud.php?"
-end
-
-Given(/^there is an existing word cloud/) do
-  if find_by_id("wordcloud").has_css?('a')
-    true
-  else
     visit "/LyricFloat/word-cloud.php?artists[]=coldplay"
-  end
 end
 
 Then(/^I should see words$/) do
@@ -23,6 +15,10 @@ end
 
 Then(/^there should not exist the word "(.*?)"$/) do |word|
   find("#wordcloud").all('a', :text => word).nil?
+end
+
+Then(/^there should exist the word "(.*?)"$/) do |word|
+  find("#wordcloud").all('a', :text => word)
 end
 
 Given(/^I create a word cloud of "(.*?)"$/) do |artist|

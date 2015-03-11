@@ -1,4 +1,4 @@
-Given(/^there exists an add to cloud button$/) do
+Given(/^there is an add to cloud button$/) do
   page.has_button?('Add To Cloud')
 end
 
@@ -9,7 +9,6 @@ end
 
 Given(/^song exists$/) do
   visit "/LyricFloat/song-page.php?searched-word=weighs"
-  sleep 5
   page.find('.lyrics').find('li')
 end
 
