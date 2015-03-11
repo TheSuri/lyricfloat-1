@@ -19,7 +19,7 @@ function getLyrics($artist_results, $rapgenius)
 
         foreach ($song_results as $song)
 		{
-			if ($song['result']['primary_artist']['name'] == $artist)
+			if (strtolower($song['result']['primary_artist']['name']) == strtolower($artist))
 			{
 				$songs[] = array(
 					'title' => $song['result']['title'],
@@ -33,6 +33,8 @@ function getLyrics($artist_results, $rapgenius)
 	
     return $artists;
 }
+
+require_once('RapGenius-PHP-master/src/rapgenius.php');
 
 ?>
 

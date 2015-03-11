@@ -24,5 +24,5 @@ Feature: Generate WC
         
     Scenario: Size based on frequency
         Given I am on the word cloud page
-        And I create a word cloud of "My Favorite Highway"
-        Then there should be more "highway" than "touch"
+        And I create a word cloud of "Dolores Hayden"
+        Then there should be more "weighs" than "read"

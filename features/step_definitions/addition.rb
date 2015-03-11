@@ -3,12 +3,11 @@ Given(/^there exists an add to cloud button$/) do
 end
 
 Given(/^I am on the song page$/) do
-  visit "/LyricFloat/word-cloud.php?artist_name=my+favorite+highway"
-  click_link('highway')
+  visit "/LyricFloat/word-cloud.php?artist_name=Dolores+Hayden"
+  click_link('weighs')
 end
 
 Given(/^song exists$/) do
-  visit "/LyricFloat/song-page.php?searched-word=highway"
   page.find('.lyrics').find('li')
 end
 
