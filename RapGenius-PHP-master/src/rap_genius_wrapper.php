@@ -55,7 +55,7 @@ class RapGenius
     protected $_use_ssl  = '';
     protected $_method   = '';
     
-    protected $_query_parameters = array();
+    public $_query_parameters = array();
 
 
     public function __construct()
