@@ -112,6 +112,7 @@ class WordCloud {
     }
 
     function getFreqArray($words) {
+		$freq_array = array();
     	foreach ($words as $word => $wc_word) {
 	        if (!in_array(strtolower($word), $this->stopwords, TRUE)) {
 	            $freq_array[$word] = $wc_word->freq;
@@ -121,6 +122,7 @@ class WordCloud {
     }
 
 	function filter_stopwords() {
+		$filtered_words = array();
 	    foreach ($this->words as $word => $wc_word) {
 	        if (!in_array(strtolower($word), $this->stopwords, TRUE)) {
 	            $filtered_words[$word] = $wc_word;
@@ -138,8 +140,6 @@ class WordCloud {
     	if (count($words)==0) return implode('', $cloud);
 
     	arsort($words);
-
-    	array_splice($words, $this->maxNumWords);
 
 	    /* This word cloud generation algorithm was taken from the Wikipedia page on "word cloud"
 	       with some minor modifications to the implementation */
@@ -196,7 +196,7 @@ class WordCloud {
 	function standardDeviation($words, $mean) {
 		$sum = 0;
 		foreach($words as $word => $freq) {
-			$sum += pow($freq-$mean, 2);
+			$sum +=pow($freq-$mean, 2);
 		}
 		return sqrt($sum / count($words));
 	}

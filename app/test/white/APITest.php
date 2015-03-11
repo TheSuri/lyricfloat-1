@@ -66,6 +66,7 @@ class APITest extends PHPUnit_Framework_TestCase
 		
 		$this->assertNotEmpty($rapgenius->_query_parameters);
 		$this->assertArrayHasKey($key, $rapgenius->_query_parameters);
+		$this->assertEquals($value, $rapgenius->_query_parameters[$key]);
 		
 		return $rapgenius;
 	}
