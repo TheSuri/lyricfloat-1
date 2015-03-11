@@ -11,7 +11,7 @@ Then(/^I should see a submit button$/) do
   # pending # express the regexp above with the code you wish you had
 end
 
-Given(/^there exists a search text box$/) do
+Given(/^there is a search text box$/) do
   page.has_field?('artists[]')  
 end
 
@@ -38,10 +38,6 @@ Then(/^I should see a picture next to the autocomplete results$/) do
   end
 end
 
-Given(/^there exists a submit button$/) do
+Given(/^there is a submit button$/) do
   page.has_button?('Submit')
-end
-
-Given(/^there exists an add to cloud button$/) do
-  page.has_button?('Add To Cloud')
 end

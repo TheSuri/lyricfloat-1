@@ -14,7 +14,7 @@ Feature: Searching
 
     Scenario: Search Text Autocomplete
         Given I am on the home page
-        	And there exists a search text box
+        	And there is a search text box
         When I type "Avicii" in the search text box
         Then I should see autocompleted artists
         And ".ui-autocomplete" should be visible
@@ -27,8 +27,8 @@ Feature: Searching
 
     Scenario: POST request sent
         Given I am on the home page
-            And there exists a search text box
-            And there exists a submit button
+            And there is a search text box
+            And there is a submit button
         When I type "Avicii" in the search text box
             And I click the "Submit" button
         Then I should be on the "LyricFloat - Word Cloud" page
