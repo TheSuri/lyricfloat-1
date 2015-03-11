@@ -21,7 +21,7 @@ class WordCloud {
 	    	$err = $this->mergeData($data);
 	    	$err = $this->countWordFreq();
 		} catch (Exception $e) {
-			throw $e;
+			throw $e; //@codeCoverageIgnore
 		}
 	}
 	
@@ -66,7 +66,7 @@ class WordCloud {
 				}
 			}
 		} catch (Exception $e) {
-			throw $e;
+			throw $e; //@codeCoverageIgnore
 		}
 	}
 
@@ -84,7 +84,7 @@ class WordCloud {
 	            }
 	        }
     	} catch (Exception $e) {
-    		throw $e;
+    		throw $e; //@codeCoverageIgnore
     	}
     }
 
@@ -180,6 +180,10 @@ class WordCloud {
 		return sqrt($sum / count($words));
 	}
 
+    /**
+	 * This is not used by us
+	 * @codeCoverageIgnore
+	 */
 	private function shuffle_assoc($list) { 
 		if (!is_array($list)) return $list; 
 

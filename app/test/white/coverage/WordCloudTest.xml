@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1426057498">
+  <project timestamp="1426057498">
+    <file name="/media/sf_lyricfloat/LyricFloat/app/Artist.php">
+      <class name="Artist" namespace="global">
+        <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </class>
+      <line num="9" type="method" name="__construct" crap="1" count="11"/>
+      <line num="10" type="stmt" count="11"/>
+      <line num="11" type="stmt" count="11"/>
+      <metrics loc="13" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+    </file>
+    <file name="/media/sf_lyricfloat/LyricFloat/app/Song.php">
+      <class name="Song" namespace="global">
+        <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="19" elements="22" coveredelements="22"/>
+      </class>
+      <line num="9" type="method" name="__construct" crap="1" count="11"/>
+      <line num="10" type="stmt" count="11"/>
+      <line num="11" type="stmt" count="11"/>
+      <line num="12" type="stmt" count="11"/>
+      <line num="13" type="stmt" count="11"/>
+      <line num="17" type="method" name="getWordCount" crap="3" count="11"/>
+      <line num="18" type="stmt" count="11"/>
+      <line num="19" type="stmt" count="11"/>
+      <line num="20" type="stmt" count="11"/>
+      <line num="21" type="stmt" count="11"/>
+      <line num="22" type="stmt" count="11"/>
+      <line num="23" type="stmt" count="11"/>
+      <line num="24" type="stmt" count="5"/>
+      <line num="25" type="stmt" count="5"/>
+      <line num="26" type="stmt" count="11"/>
+      <line num="28" type="stmt" count="11"/>
+      <line num="29" type="stmt" count="11"/>
+      <line num="32" type="method" name="countWord" crap="2" count="2"/>
+      <line num="33" type="stmt" count="2"/>
+      <line num="34" type="stmt" count="2"/>
+      <line num="35" type="stmt" count="2"/>
+      <line num="37" type="stmt" count="2"/>
+      <metrics loc="40" ncloc="34" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="19" elements="22" coveredelements="22"/>
+    </file>
+    <file name="/media/sf_lyricfloat/LyricFloat/app/WC_Word.php">
+      <class name="WC_Word" namespace="global" fullPackage="WC">
+        <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </class>
+      <line num="13" type="method" name="__construct" crap="1" count="11"/>
+      <line num="14" type="stmt" count="11"/>
+      <line num="15" type="stmt" count="11"/>
+      <line num="16" type="stmt" count="11"/>
+      <line num="17" type="stmt" count="11"/>
+      <metrics loc="19" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+    </file>
+    <file name="/media/sf_lyricfloat/LyricFloat/app/WordCloud.php">
+      <class name="WordCloud" namespace="global">
+        <metrics methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="80" coveredstatements="80" elements="89" coveredelements="89"/>
+      </class>
+      <line num="13" type="method" name="__construct" crap="1" count="4"/>
+      <line num="15" type="stmt" count="4"/>
+      <line num="16" type="stmt" count="4"/>
+      <line num="19" type="method" name="generateCloud" crap="2" count="2"/>
+      <line num="21" type="stmt" count="2"/>
+      <line num="22" type="stmt" count="2"/>
+      <line num="23" type="stmt" count="2"/>
+      <line num="26" type="stmt" count="2"/>
+      <line num="57" type="method" name="mergeData" crap="5" count="4"/>
+      <line num="59" type="stmt" count="4"/>
+      <line num="60" type="stmt" count="4"/>
+      <line num="61" type="stmt" count="4"/>
+      <line num="62" type="stmt" count="4"/>
+      <line num="63" type="stmt" count="4"/>
+      <line num="64" type="stmt" count="4"/>
+      <line num="65" type="stmt" count="4"/>
+      <line num="66" type="stmt" count="4"/>
+      <line num="67" type="stmt" count="4"/>
+      <line num="68" type="stmt" count="4"/>
+      <line num="71" type="stmt" count="4"/>
+      <line num="77" type="method" name="countWordFreq" crap="4" count="3"/>
+      <line num="79" type="stmt" count="3"/>
+      <line num="80" type="stmt" count="3"/>
+      <line num="81" type="stmt" count="3"/>
+      <line num="83" type="stmt" count="3"/>
+      <line num="84" type="stmt" count="3"/>
+      <line num="85" type="stmt" count="3"/>
+      <line num="86" type="stmt" count="3"/>
+      <line num="89" type="stmt" count="3"/>
+      <line num="95" type="method" name="mergeWordCount" crap="3" count="4"/>
+      <line num="96" type="stmt" count="4"/>
+      <line num="97" type="stmt" count="4"/>
+      <line num="98" type="stmt" count="1"/>
+      <line num="99" type="stmt" count="1"/>
+      <line num="100" type="stmt" count="4"/>
+      <line num="102" type="stmt" count="4"/>
+      <line num="103" type="stmt" count="4"/>
+      <line num="105" type="method" name="filter_stopwords" crap="3" count="3"/>
+      <line num="106" type="stmt" count="3"/>
+      <line num="107" type="stmt" count="3"/>
+      <line num="108" type="stmt" count="3"/>
+      <line num="109" type="stmt" count="3"/>
+      <line num="110" type="stmt" count="3"/>
+      <line num="111" type="stmt" count="3"/>
+      <line num="116" type="method" name="generateWC" crap="7" count="2"/>
+      <line num="117" type="stmt" count="2"/>
+      <line num="118" type="stmt" count="2"/>
+      <line num="119" type="stmt" count="2"/>
+      <line num="120" type="stmt" count="2"/>
+      <line num="122" type="stmt" count="2"/>
+      <line num="128" type="stmt" count="2"/>
+      <line num="130" type="stmt" count="2"/>
+      <line num="131" type="stmt" count="2"/>
+      <line num="132" type="stmt" count="2"/>
+      <line num="133" type="stmt" count="2"/>
+      <line num="135" type="stmt" count="1"/>
+      <line num="136" type="stmt" count="1"/>
+      <line num="138" type="stmt" count="2"/>
+      <line num="139" type="stmt" count="2"/>
+      <line num="140" type="stmt" count="2"/>
+      <line num="141" type="stmt" count="2"/>
+      <line num="142" type="stmt" count="2"/>
+      <line num="147" type="stmt" count="2"/>
+      <line num="148" type="stmt" count="2"/>
+      <line num="149" type="stmt" count="2"/>
+      <line num="150" type="stmt" count="2"/>
+      <line num="151" type="stmt" count="2"/>
+      <line num="153" type="stmt" count="2"/>
+      <line num="155" type="stmt" count="2"/>
+      <line num="158" type="method" name="getSongsWith" crap="5" count="2"/>
+      <line num="159" type="stmt" count="2"/>
+      <line num="160" type="stmt" count="2"/>
+      <line num="161" type="stmt" count="2"/>
+      <line num="162" type="stmt" count="2"/>
+      <line num="163" type="stmt" count="2"/>
+      <line num="164" type="stmt" count="2"/>
+      <line num="165" type="stmt" count="1"/>
+      <line num="166" type="stmt" count="1"/>
+      <line num="167" type="stmt" count="2"/>
+      <line num="169" type="stmt" count="2"/>
+      <line num="170" type="stmt" count="2"/>
+      <line num="171" type="stmt" count="2"/>
+      <line num="172" type="stmt" count="2"/>
+      <line num="175" type="method" name="standardDeviation" crap="2" count="3"/>
+      <line num="176" type="stmt" count="3"/>
+      <line num="177" type="stmt" count="3"/>
+      <line num="178" type="stmt" count="3"/>
+      <line num="179" type="stmt" count="3"/>
+      <line num="180" type="stmt" count="3"/>
+      <metrics loc="199" ncloc="90" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="80" coveredstatements="80" elements="89" coveredelements="89"/>
+    </file>
+    <file name="/media/sf_lyricfloat/LyricFloat/app/test/white/WordCloudTest.php">
+      <class name="WordCloudTest" namespace="global">
+        <metrics methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="113" coveredstatements="113" elements="125" coveredelements="125"/>
+      </class>
+      <line num="81" type="method" name="testWordCloud" crap="1" count="1"/>
+      <line num="83" type="stmt" count="1"/>
+      <line num="84" type="stmt" count="1"/>
+      <line num="86" type="stmt" count="1"/>
+      <line num="92" type="method" name="testMergeData" crap="1" count="1"/>
+      <line num="95" type="stmt" count="1"/>
+      <line num="97" type="stmt" count="1"/>
+      <line num="99" type="stmt" count="1"/>
+      <line num="100" type="stmt" count="1"/>
+      <line num="101" type="stmt" count="1"/>
+      <line num="102" type="stmt" count="1"/>
+      <line num="116" type="method" name="assertWordEquality" crap="3" count="2"/>
+      <line num="119" type="stmt" count="2"/>
+      <line num="121" type="stmt" count="2"/>
+      <line num="122" type="stmt" count="2"/>
+      <line num="123" type="stmt" count="2"/>
+      <line num="124" type="stmt" count="2"/>
+      <line num="126" type="stmt" count="2"/>
+      <line num="128" type="stmt" count="2"/>
+      <line num="129" type="stmt" count="2"/>
+      <line num="130" type="stmt" count="2"/>
+      <line num="136" type="method" name="testMergeWordCount" crap="1" count="1"/>
+      <line num="139" type="stmt" count="1"/>
+      <line num="142" type="stmt" count="1"/>
+      <line num="144" type="stmt" count="1"/>
+      <line num="146" type="stmt" count="1"/>
+      <line num="147" type="stmt" count="1"/>
+      <line num="148" type="stmt" count="1"/>
+      <line num="149" type="stmt" count="1"/>
+      <line num="151" type="stmt" count="1"/>
+      <line num="152" type="stmt" count="1"/>
+      <line num="153" type="stmt" count="1"/>
+      <line num="154" type="stmt" count="1"/>
+      <line num="157" type="stmt" count="1"/>
+      <line num="159" type="stmt" count="1"/>
+      <line num="160" type="stmt" count="1"/>
+      <line num="161" type="stmt" count="1"/>
+      <line num="162" type="stmt" count="1"/>
+      <line num="164" type="stmt" count="1"/>
+      <line num="171" type="method" name="testCountWordFreq" crap="1" count="1"/>
+      <line num="174" type="stmt" count="1"/>
+      <line num="177" type="stmt" count="1"/>
+      <line num="179" type="stmt" count="1"/>
+      <line num="180" type="stmt" count="1"/>
+      <line num="182" type="stmt" count="1"/>
+      <line num="188" type="method" name="testFilterStopwords" crap="1" count="1"/>
+      <line num="190" type="stmt" count="1"/>
+      <line num="191" type="stmt" count="1"/>
+      <line num="192" type="stmt" count="1"/>
+      <line num="193" type="stmt" count="1"/>
+      <line num="194" type="stmt" count="1"/>
+      <line num="196" type="stmt" count="1"/>
+      <line num="197" type="stmt" count="1"/>
+      <line num="198" type="stmt" count="1"/>
+      <line num="199" type="stmt" count="1"/>
+      <line num="200" type="stmt" count="1"/>
+      <line num="202" type="stmt" count="1"/>
+      <line num="205" type="method" name="testGenerateCloud" crap="1" count="1"/>
+      <line num="208" type="stmt" count="1"/>
+      <line num="209" type="stmt" count="1"/>
+      <line num="211" type="stmt" count="1"/>
+      <line num="214" type="stmt" count="1"/>
+      <line num="215" type="stmt" count="1"/>
+      <line num="217" type="stmt" count="1"/>
+      <line num="218" type="stmt" count="1"/>
+      <line num="220" type="stmt" count="1"/>
+      <line num="227" type="method" name="testGenerateWCNormative" crap="2" count="1"/>
+      <line num="229" type="stmt" count="1"/>
+      <line num="230" type="stmt" count="1"/>
+      <line num="233" type="stmt" count="1"/>
+      <line num="234" type="stmt" count="1"/>
+      <line num="235" type="stmt" count="1"/>
+      <line num="236" type="stmt" count="1"/>
+      <line num="237" type="stmt" count="1"/>
+      <line num="239" type="method" name="testGenerateWCManyWords" crap="5" count="1"/>
+      <line num="241" type="stmt" count="1"/>
+      <line num="242" type="stmt" count="1"/>
+      <line num="244" type="stmt" count="1"/>
+      <line num="246" type="stmt" count="1"/>
+      <line num="247" type="stmt" count="1"/>
+      <line num="248" type="stmt" count="1"/>
+      <line num="249" type="stmt" count="1"/>
+      <line num="250" type="stmt" count="1"/>
+      <line num="254" type="stmt" count="1"/>
+      <line num="255" type="stmt" count="1"/>
+      <line num="257" type="stmt" count="1"/>
+      <line num="258" type="stmt" count="1"/>
+      <line num="259" type="stmt" count="1"/>
+      <line num="260" type="stmt" count="1"/>
+      <line num="261" type="stmt" count="1"/>
+      <line num="263" type="stmt" count="1"/>
+      <line num="264" type="stmt" count="1"/>
+      <line num="267" type="stmt" count="1"/>
+      <line num="268" type="stmt" count="1"/>
+      <line num="270" type="stmt" count="1"/>
+      <line num="273" type="stmt" count="1"/>
+      <line num="274" type="stmt" count="1"/>
+      <line num="275" type="stmt" count="1"/>
+      <line num="281" type="method" name="testStandardDeviation" crap="1" count="1"/>
+      <line num="283" type="stmt" count="1"/>
+      <line num="284" type="stmt" count="1"/>
+      <line num="285" type="stmt" count="1"/>
+      <line num="290" type="method" name="testGetSongsWith" crap="1" count="1"/>
+      <line num="292" type="stmt" count="1"/>
+      <line num="293" type="stmt" count="1"/>
+      <line num="294" type="stmt" count="1"/>
+      <line num="295" type="stmt" count="1"/>
+      <line num="297" type="method" name="testGetSongsWithMultipleSongs" crap="1" count="1"/>
+      <line num="301" type="stmt" count="1"/>
+      <line num="302" type="stmt" count="1"/>
+      <line num="304" type="stmt" count="1"/>
+      <line num="306" type="stmt" count="1"/>
+      <line num="307" type="stmt" count="1"/>
+      <line num="309" type="stmt" count="1"/>
+      <line num="311" type="stmt" count="1"/>
+      <line num="312" type="stmt" count="1"/>
+      <line num="314" type="stmt" count="1"/>
+      <line num="315" type="stmt" count="1"/>
+      <line num="316" type="stmt" count="1"/>
+      <line num="318" type="stmt" count="1"/>
+      <line num="319" type="stmt" count="1"/>
+      <line num="321" type="stmt" count="1"/>
+      <line num="322" type="stmt" count="1"/>
+      <line num="323" type="stmt" count="1"/>
+      <line num="324" type="stmt" count="1"/>
+      <metrics loc="325" ncloc="255" classes="1" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="113" coveredstatements="113" elements="125" coveredelements="125"/>
+    </file>
+    <metrics files="5" loc="596" ncloc="411" classes="5" methods="26" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="218" coveredstatements="218" elements="244" coveredelements="244"/>
+  </project>
+</coverage>

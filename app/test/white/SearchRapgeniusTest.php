@@ -25,6 +25,42 @@ class EmptyGenius extends RapGenius
 
 class SearchRapgeniusTest extends PHPUnit_Framework_TestCase
 {
+	public static $coverage;
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public static function setUpBeforeClass()
+	{
+		SearchRapgeniusTest::$coverage = new PHP_CodeCoverage();
+	}
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public function setUp()
+	{
+		SearchRapgeniusTest::$coverage->start($this);
+	}
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public function tearDown()
+	{
+		SearchRapgeniusTest::$coverage->stop();
+	}
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public static function tearDownAfterClass()
+	{
+		$writer = new PHP_CodeCoverage_Report_Clover;
+		$writer->process(SearchRapgeniusTest::$coverage, 'coverage/SearchRapgeniusTest.xml');
+		
+		$writer = new PHP_CodeCoverage_Report_HTML;
+		$writer->process(SearchRapgeniusTest::$coverage, 'coverage/SearchRapgeniusTest');
+	}
 	public function testSearch()
 	{
 		$rapgenius = new MockGenius();

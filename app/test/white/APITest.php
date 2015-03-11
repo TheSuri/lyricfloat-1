@@ -4,6 +4,43 @@ require_once('../../../RapGenius-PHP-master/src/rap_genius_wrapper.php');
 
 class APITest extends PHPUnit_Framework_TestCase
 {	
+	public static $coverage;
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public static function setUpBeforeClass()
+	{
+		APITest::$coverage = new PHP_CodeCoverage();
+	}
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public function setUp()
+	{
+		APITest::$coverage->start($this);
+	}
+	
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public function tearDown()
+	{
+		APITest::$coverage->stop();
+	}
+	/**
+	 * @codeCoverageIgnore
+	 */
+	public static function tearDownAfterClass()
+	{
+		$writer = new PHP_CodeCoverage_Report_Clover;
+		$writer->process(APITest::$coverage, 'coverage/APITest.xml');
+		
+		$writer = new PHP_CodeCoverage_Report_HTML;
+		$writer->process(APITest::$coverage, 'coverage/APITest');
+	}
+
 	public function testSanity()
 	{
 		$rapgenius = new RapGenius();

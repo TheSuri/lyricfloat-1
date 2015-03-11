@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1426057490">
+  <project timestamp="1426057490">
+    <file name="/media/sf_lyricfloat/LyricFloat/app/WC_Word.php">
+      <class name="WC_Word" namespace="global" fullPackage="WC">
+        <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </class>
+      <line num="13" type="method" name="__construct" crap="1" count="1"/>
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <metrics loc="19" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+    </file>
+    <file name="/media/sf_lyricfloat/LyricFloat/app/test/white/WC_WordTest.php">
+      <class name="WC_WordTest" namespace="global" fullPackage="WC">
+        <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+      </class>
+      <line num="43" type="method" name="testWCGeneration" crap="1" count="1"/>
+      <line num="45" type="stmt" count="1"/>
+      <line num="46" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <metrics loc="53" ncloc="41" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+    </file>
+    <metrics files="2" loc="72" ncloc="60" classes="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
+  </project>
+</coverage>
