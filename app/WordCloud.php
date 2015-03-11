@@ -106,7 +106,7 @@ class WordCloud {
     function getArtistsURL() {
     	$url = "";
     	foreach ($this->artists as $artist_name => $artist) {
-    		$url .= urlencode("artists[]={$artist_name}&");
+    		$url .= "artists[]=".urlencode($artist_name)."&";
     	}
     	return $url;
     }
@@ -166,7 +166,7 @@ class WordCloud {
 	    	// typically be no more than 1.2 standard deviations away from each other. 
 	    	// if there is an outlier, we just set it to the min or max font size.
             $color = $this->words[$word]->color;
-            array_push($cloud, "<a href='/LyricFloat/song-page.php?{$artist_url}&searched-word={$word}'><span style=\"font-size: {$font_size}em; color: {$color};\">$word</span></a> ");
+            array_push($cloud, "<a href='/LyricFloat/song-page.php?{$artist_url}searched-word={$word}'><span style=\"font-size: {$font_size}em; color: {$color};\">$word</span></a> ");
             $tags++;
             if ($tags >= $this->maxNumWords) break;
 	    }

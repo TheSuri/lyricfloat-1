@@ -2,6 +2,9 @@
 	$artist = null;
 	$song_name = null;
 	require_once('app/WordCloud.php');
+	require_once('app/search_rapgenius.php');
+	require_once('RapGenius-PHP-master/src/rapgenius.php');
+	require_once('RapGenius-PHP-master/src/rap_genius_wrapper.php');
 
 	session_start();
 	$WC = $_SESSION['WC'];
@@ -13,9 +16,7 @@
 	}	
 	if (isset($_GET['artist'])) $artist = $_GET['artist'];
 	if (isset($_GET['song_name'])) $song_name = $_GET['song_name'];
-	if (isset($_SESSION['searched_word'])) {
-		$searched_word = $_SESSION['searched_word'];
-	}
+	if (isset($_GET['searched_word'])) $searched_word = $_GET['searched_word'];
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
 						<div class="lyrics">
 							<?php
 								if (isset($song_name) && isset($artist)) {
-									echo "<pre>",$WC->artists[$artist]->songs[$song_name]->lyrics,"</pre>";
+									echo "<pre>".$WC->artists[$artist]->songs[$song_name]->lyrics."</pre>";
 								} else {
 									$_SESSION["alert"] = "Error: Please select a song to display";
 									header("Location: http://localhost/LyricFloat/song-page.php");
