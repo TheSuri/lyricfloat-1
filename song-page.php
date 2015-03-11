@@ -4,6 +4,12 @@
 
 	session_start();
 	$WC = $_SESSION['WC'];
+	if (!isset($WC)) {
+		$data = getLyrics($_GET['artists'], new RapGenius());
+		$WC = new WordCloud();
+		$WC->generateCloud($data);
+		$_SESSION['WC'] = $WC;
+	}
 	if (isset($_GET['searched-word'])) {
 		$searched_word = $_GET['searched-word'];
 		$_SESSION['searched_word'] = $searched_word;
@@ -35,10 +41,11 @@
 									$songs = $WC->getSongsWith($searched_word);
 									if (isset($songs)) {
 										echo "<ul>";
+										$artist_url = $WC->getArtistsURL();
 										foreach ($songs as $artist => $a_songs) {
 											echo "<h2>{$artist}</h2>";
 											foreach ($a_songs as $song => $count) {
-												echo "<li><a href='/LyricFloat/lyrics-page.php?song_name={$song}&artist={$artist}'>$song ($count)</a></li>";
+												echo "<li><a href='/LyricFloat/lyrics-page.php?{$artist_url}&song_name={$song}&artist={$artist}'>$song ($count)</a></li>";
 											}
 										}
 										echo "</ul>";
@@ -46,8 +53,9 @@
 										echo "Could not find specified artists or songs\nMake sure you've successfully created a word cloud,\n and your session cookies are turned on";
 									}
 								} else {
-									$_SESSION["alert"] = "Error: Please select a word to display";
-									header("Location: http://localhost/LyricFloat/word-cloud.php");
+									echo "$searched_word is not set";
+									// $_SESSION["alert"] = "Error: Please select a word to display";
+									// header("Location: http://localhost/LyricFloat/word-cloud.php");
 								}
 							?>
 						</div>

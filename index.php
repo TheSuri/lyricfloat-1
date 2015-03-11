@@ -1,6 +1,5 @@
 <?php 
 	session_start();
-	// $alert = $_SESSION['alert'];
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +21,7 @@
 			</div>
 			<form  id="artist_name_form" action="word-cloud.php">	
 				<div>
-					<input id="search-box" form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
+					<input id="search-box" form="artist_name_form" type="search" name="artists[]" autofocus required placeholder="Artist Name">
 				</div>
 				<div class="inner-wrap">
 				   <button class="button" type="submit">Submit</button>		

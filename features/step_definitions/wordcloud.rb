@@ -6,7 +6,7 @@ Given(/^there is an existing word cloud/) do
   if find_by_id("wordcloud").has_css?('a')
     true
   else
-    visit "/LyricFloat/word-cloud.php?artist_name=coldplay"
+    visit "/LyricFloat/word-cloud.php?artists[]=coldplay"
   end
 end
 
@@ -26,7 +26,7 @@ Then(/^there should not exist the word "(.*?)"$/) do |word|
 end
 
 Given(/^I create a word cloud of "(.*?)"$/) do |artist|
-  visit "/LyricFloat/word-cloud.php?artist_name=my+favorite+highway"
+  visit "/LyricFloat/word-cloud.php?artists[]=my+favorite+highway"
 end
 
 Then(/^there should be more "(.*?)" than "(.*?)"$/) do |word1, word2|

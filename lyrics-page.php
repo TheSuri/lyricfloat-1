@@ -5,6 +5,12 @@
 
 	session_start();
 	$WC = $_SESSION['WC'];
+	if (!isset($WC)) {
+		$data = getLyrics($_GET['artists'], new RapGenius());
+		$WC = new WordCloud();
+		$WC->generateCloud($data);
+		$_SESSION['WC'] = $WC;
+	}	
 	if (isset($_GET['artist'])) $artist = $_GET['artist'];
 	if (isset($_GET['song_name'])) $song_name = $_GET['song_name'];
 	if (isset($_SESSION['searched_word'])) {

@@ -24,20 +24,30 @@
 				<div id="wordcloud" class="word-cloud-wrap">
 					<?php
 					// TODO: Show loading bar
-						if (isset($_GET['artist_name'])) {
-						    $artist = $_GET['artist_name'];
+						if (isset($_GET['artists'])) {
+						    $artists = $_GET['artists'];
 							try {
-							    if (!isset($WC->artists[$artist])) {
-									$data = getLyrics(array($artist), new RapGenius());
-									if (isset($_GET['additional_artist']) && $_GET['additional_artist']) {
-										$WC->mergeData($data);
+								if (!isset($WC)) {
+									$WC = new WordCloud();
+									$data = getLyrics($artists, new RapGenius());
+									$WC->generateCloud($data);
+								} else {
+									// Get rid of saved artists that were not searched for
+									foreach ($WC->artists as $artist_name => $artist) {
+										if (!in_array($artist_name, $artists)) {
+											unset($WC->artists[$artist_name]);
+										}
 									}
-									else { 
-										$WC = new WordCloud();
-										$WC->generateCloud($data);
+									foreach ($artists as $artist) {
+									    if (!isset($WC->artists[$artist])) {
+											$data = getLyrics(array($artist), new RapGenius());
+											$WC->mergeData($data);
+									    }
 									}
-									$_SESSION['WC'] = $WC;
-							    }
+									$WC->filter_stopwords();
+									$WC->countWordFreq();
+								}
+								$_SESSION['WC'] = $WC;
 								echo $WC->generateWC();
 							} catch (Exception $e) {
 								echo $e->getMessage();
@@ -59,11 +69,11 @@
 				<div class="wc_form">
 					<form  id="artist_name_form" action="/LyricFloat/word-cloud.php">
 						<div>
-							<input form="artist_name_form" type="checkbox" name="additional_artist" style="display:none;">
-							<input id="search-box" form="artist_name_form" type="search" name="artist_name" autofocus required placeholder="Artist Name">
+							<input id="search-box" form="artist_name_form" type="search" name="artists[]" autofocus required placeholder="Artist Name">
+							<!-- <input form="artist_name_form" type="checkbox" name="clear_artist" style="display:none;"> -->
 						</div>
 						<div class="inner-wrap">
-							<button id="add_to_cloud_btn" class="third-button" onclick="addToCloud()">Add To Cloud</button>
+							<button id="add_to_cloud_btn" class="third-button" onclick="addToCloud(event)">Add To Cloud</button>
 							<img id="share_btn" src="/LyricFloat/assets/images/share_button.png" >
 							<button id="new_cloud_btn" class="third-button" type="submit">Submit</button>		
 						</div>
@@ -76,9 +86,15 @@
 <script src="assets/javascript/html2canvas.js" type="text/javascript"></script>
 <script src="assets/javascript/base64binary.js" type="text/javascript"></script>
 <script type="text/javascript">
-	function addToCloud() {
-		$("input[type=checkbox]").prop('checked', true);
-		$("#artist_name_form").submit();
+	function addToCloud(e) {
+		e.preventDefault();
+		var artists = <?php echo json_encode($_GET['artists']); ?>;
+		artists.push($("#search-box").val());
+		console.log(artists);
+		// $("#artist_name_form").submit();
+		location.href = '/LyricFloat/word-cloud.php?'+artists.map(function(artist) {
+			return encodeURIComponent("artists[]="+artist);
+		}).join("&");
 	};
 	(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];

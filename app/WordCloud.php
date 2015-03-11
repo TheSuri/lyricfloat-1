@@ -18,9 +18,9 @@ class WordCloud {
 	// Abstracted out of constructor. Actually generates word cloud.
 	function generateCloud($data) {
     	try {
-	    	$err = $this->mergeData($data);
-	    	$err = $this->countWordFreq();
+	    	$this->mergeData($data);
 	    	$this->filter_stopwords();
+	    	$this->countWordFreq();
 		} catch (Exception $e) {
 			throw $e;
 		}
@@ -103,6 +103,14 @@ class WordCloud {
         }
     }
 
+    function getArtistsURL() {
+    	$url = "";
+    	foreach ($this->artists as $artist_name => $artist) {
+    		$url .= urlencode("artists[]={$artist_name}&");
+    	}
+    	return $url;
+    }
+
     function getFreqArray($words) {
     	foreach ($words as $word => $wc_word) {
 	        if (!in_array(strtolower($word), $this->stopwords, TRUE)) {
@@ -147,6 +155,7 @@ class WordCloud {
 			$sd = 1;
 		}
 
+		$artist_url = $this->getArtistsURL();
 	    foreach ($words as $word => $freq) {
 	    	$wordSD = (($freq - $mean) / $sd);
 	    	if ($wordSD > 1.2) $font_size = $fmax;
@@ -157,7 +166,7 @@ class WordCloud {
 	    	// typically be no more than 1.2 standard deviations away from each other. 
 	    	// if there is an outlier, we just set it to the min or max font size.
             $color = $this->words[$word]->color;
-            array_push($cloud, "<a href='/LyricFloat/song-page.php?searched-word={$word}'><span style=\"font-size: {$font_size}em; color: {$color};\">$word</span></a> ");
+            array_push($cloud, "<a href='/LyricFloat/song-page.php?{$artist_url}&searched-word={$word}'><span style=\"font-size: {$font_size}em; color: {$color};\">$word</span></a> ");
             $tags++;
             if ($tags >= $this->maxNumWords) break;
 	    }
@@ -205,13 +214,13 @@ class WordCloud {
 	} 
 }
 
-require_once('search_rapgenius.php');
-require_once(dirname(__FILE__).'/../RapGenius-PHP-master/src/rapgenius.php');
-require_once(dirname(__FILE__).'/../RapGenius-PHP-master/src/rap_genius_wrapper.php');
+// require_once('search_rapgenius.php');
+// require_once(dirname(__FILE__).'/../RapGenius-PHP-master/src/rapgenius.php');
+// require_once(dirname(__FILE__).'/../RapGenius-PHP-master/src/rap_genius_wrapper.php');
 
-$data = getLyrics(array('Dolores Hayden'), new RapGenius());
-$WC = new WordCloud();
-$WC->generateCloud($data);
-$WC->generateWC();
+// $data = getLyrics(array('Dolores Hayden'), new RapGenius());
+// $WC = new WordCloud();
+// $WC->generateCloud($data);
+// echo $WC->getArtistsURL();
 
 ?>
