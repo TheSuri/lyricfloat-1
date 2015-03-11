@@ -48,7 +48,7 @@
 										foreach ($songs as $artist => $a_songs) {
 											echo "<h2>{$artist}</h2>";
 											foreach ($a_songs as $song => $count) {
-												echo "<li><a class='song_link' href='/LyricFloat/lyrics-page.php?{$artist_url}song_name={$song}&artist={$artist}&searched_word={$searched_word}'>$song ($count)</a></li>";
+												echo "<li><a class=\"song_link\" href=\"/LyricFloat/lyrics-page.php?{$artist_url}song_name={$song}&artist={$artist}&searched_word={$searched_word}\">$song ($count)</a></li>";
 											}
 										}
 										echo "</ul>";

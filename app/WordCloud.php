@@ -190,6 +190,10 @@ class WordCloud {
             	}
 			}
     	}
+    	foreach ($songs as $artist => $song_list) {
+    		arsort($song_list);
+    		$songs[$artist] = $song_list;
+    	}
     	return $songs;
     }
 
