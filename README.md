@@ -1,7 +1,6 @@
 LyricFloat [![Status](https://rawgit.com/bryan/bryan.github.io/master/images/inactive.svg)](#)
 =======
 
-## Information
 Lyric Float aims to create word clouds from a particular artist's songs. It takes all the artist's songs and maps them onto a cloud.
 
 ## Screenshots
