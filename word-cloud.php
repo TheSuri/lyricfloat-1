@@ -4,7 +4,7 @@
 	require_once('RapGenius-PHP-master/src/rapgenius.php');
 	require_once('RapGenius-PHP-master/src/rap_genius_wrapper.php');
 	session_start();
-	$WC = $_SESSION['WC'];
+	// $WC = $_SESSION['WC'];
 ?>
 
 <!DOCTYPE html>
@@ -32,10 +32,12 @@
 									$data = getLyrics($artists, new RapGenius());
 									$WC->generateCloud($data);
 								} else {
+									echo "WC is set";
 									// Get rid of saved artists that were not searched for
 									foreach ($WC->artists as $artist_name => $artist) {
 										if (!in_array($artist_name, $artists)) {
 											unset($WC->artists[$artist_name]);
+											unset($WC->words);
 										}
 									}
 									foreach ($artists as $artist) {
@@ -93,7 +95,7 @@
 		console.log(artists);
 		// $("#artist_name_form").submit();
 		location.href = '/LyricFloat/word-cloud.php?'+artists.map(function(artist) {
-			return encodeURIComponent("artists[]="+artist);
+			return "artists[]="+encodeURIComponent(artist);
 		}).join("&");
 	};
 	(function(d, s, id) {

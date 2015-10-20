@@ -3,15 +3,9 @@ Given(/^there is an add to cloud button$/) do
 end
 
 Given(/^I am on the song page$/) do
-  visit "/LyricFloat/word-cloud.php?artists[]=Dolores+Hayden"
-  click_link('weighs')
+  visit "/LyricFloat/song-page.php?artists[]=Coldplay&searched-word=magic"
 end
 
 Given(/^song exists$/) do
-  visit "/LyricFloat/song-page.php?searched-word=weighs"
   page.find('.lyrics').find('li')
-end
-
-Then(/^I can click on a song$/) do
-  pending # express the regexp above with the code you wish you had
 end
